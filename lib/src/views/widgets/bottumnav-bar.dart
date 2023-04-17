@@ -5,6 +5,7 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 
 import '../../controllers/bottum_controller.dart';
+import '../home_views/home_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -23,21 +24,21 @@ var iconList = [
 class _HomePageState extends State<HomePage> {
   final Controller = Get.put(bottombarcontroller());
 
-  var val;
+  
   @override
   Widget build(BuildContext context) {
     return Obx(() => Scaffold(
-      body: Center(
-        child: Text(Controller.Getindex() == -1
-            ? "home"
-            : Controller.Getindex() == 0
+      body:Controller.Getindex() == 0
+            ? home()
+            : Center(
+        child: Text( Controller.Getindex() == 1
                 ? 'sunny'
-                : Controller.Getindex() == 1
+                : Controller.Getindex() == 2
                     ? 'cloudy'
-                    : Controller.Getindex() == 2
+                    : Controller.Getindex() == 3
                         ? 'profile'
                         : 'notification'),
-      ), //destination screen
+      ), 
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {},

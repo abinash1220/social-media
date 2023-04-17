@@ -4,7 +4,7 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:social_media_marketing/src/constant/app_colors.dart';
 import 'package:social_media_marketing/src/constant/app_fonts.dart';
-import 'package:social_media_marketing/src/views/home_views/home_screen.dart';
+import 'package:social_media_marketing/src/views/widgets/bottumnav-bar.dart';
 
 class ConnectFirstAccountScreen extends StatefulWidget {
   const ConnectFirstAccountScreen({super.key});

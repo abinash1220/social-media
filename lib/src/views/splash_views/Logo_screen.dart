@@ -16,7 +16,7 @@ class _LogoScreenState extends State<LogoScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
+    
     super.initState();
     redirectToNext();
   }
