@@ -39,6 +39,7 @@ dependencies:
   get: ^4.6.5
   animated_bottom_navigation_bar: ^1.2.0
   calender_picker: ^2.0.1
+  flutter_otp_text_field: ^1.1.1
 
 dev_dependencies:
   flutter_test:

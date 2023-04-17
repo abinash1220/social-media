@@ -4,77 +4,56 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:social_media_marketing/src/constant/app_colors.dart';
 import 'package:social_media_marketing/src/constant/app_fonts.dart';
-import 'package:social_media_marketing/src/views/forgot_password_views/forgot_password_screen.dart';
-import 'package:social_media_marketing/src/views/splash_views/loader_screen.dart';
+import 'package:social_media_marketing/src/views/forgot_password_views/verify_your_mail_screen.dart';
+import 'package:social_media_marketing/src/views/login_views/login_form_screen.dart';
 
-class LoginFormScreen extends StatefulWidget {
-  const LoginFormScreen({super.key});
+class CreateNewPasswordScreen extends StatefulWidget {
+  const CreateNewPasswordScreen({super.key});
 
   @override
-  State<LoginFormScreen> createState() => _LoginFormScreenState();
+  State<CreateNewPasswordScreen> createState() => _CreateNewPasswordScreenState();
 }
 
-class _LoginFormScreenState extends State<LoginFormScreen> {
+class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      backgroundColor: backgroundColor,
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.only(bottom: 60,top: 30),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                 children: [
-                  Center(
-                        child: Text("Log In",
-                        style: primaryFont.copyWith(
-                          fontSize: 26,
-                          color: const Color(0xff023047),
-                          fontWeight: FontWeight.w600))),
-                          const Image(image: AssetImage("assets/images/Group 1577.png")),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 20,right: 20),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: backgroundColor,
+        elevation: 0,
+        leading: InkWell(
+          onTap: (){
+            Get.back();
+          },
+          child: const Icon(Icons.arrow_back,color: Color(0xff023047),size: 25,)),
+        title: Text("Create New password",
+        style: secondaryFont.copyWith(fontSize: 18,fontWeight: FontWeight.w600,
+        color: const Color(0xff023047))),
+        centerTitle: true,
+      ),
+      body: Column(
+        children: [
+          const SizedBox(height: 20,),
+          const Center(child: Image(image: AssetImage("assets/images/Group 1583.png"))),
+          const SizedBox(height: 20,),
+          Text("Your New Password Must Be Different\nfrom Previously Used Password.",
+          textAlign: TextAlign.center,
+          style: secondaryFont.copyWith(fontSize: 14,fontWeight: FontWeight.w500,
+          color: const Color(0xff023047),height: 2)),
+          Padding(
+                            padding: const EdgeInsets.only(left: 20,right: 20,top: 40),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text("Email",
+                                Text("New Password",
                                       style: primaryFont.copyWith(
-                            fontSize: 16,
+                            fontSize: 18,
                             color: const Color(0xff023047),
                             fontWeight: FontWeight.w500)),
                             const SizedBox(height: 10,),
                             Container(
                               height: 45,
-                              child: TextField(
-                                    decoration: InputDecoration(
-                                              isDense: true,
-                                              enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                                color: secondaryColor,
-                                              )),
-                                              focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                                color: primaryColor,
-                                              )),
-                                              hintText: "yourname@gmail.com",
-                                              labelStyle: primaryFont.copyWith(color:const Color(0xff023047))),
-                              )),
-                              ],
-                            ),
-                          ),
-                           Padding(
-                            padding: const EdgeInsets.only(left: 20,right: 20),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("Password",
-                                      style: primaryFont.copyWith(
-                            fontSize: 16,
-                            color: const Color(0xff023047),
-                            fontWeight: FontWeight.w500)),
-                            const SizedBox(height: 10,),
-                            Container(
-                              height: 45,
+                              color: Colors.white,
                               child: TextField(
                                     decoration: InputDecoration(
                                               isDense: true,
@@ -88,32 +67,45 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
                                               )),
                                               hintText: "",
                                               suffixIcon:const Icon(Icons.remove_red_eye,color: Color(0xff023047),),
-                                              labelStyle: primaryFont.copyWith(color:const Color(0xff023047))),
+                                              labelStyle: primaryFont.copyWith(color:const Color(0xff023047),fontSize: 12)),
                               )),
-                              Padding(
-                            padding: const EdgeInsets.only(right: 20,top: 10),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 20,right: 20,top: 20),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                InkWell(
-                                  onTap: (){
-                                    Get.to(const ForgotPassWordScreen());
-                                  },
-                                  child: Text("Forgot Password",
-                                              style: primaryFont.copyWith(
-                                    fontSize: 10,
-                                    color: const Color(0xff023047),
-                                    fontWeight: FontWeight.w500)),
-                                ),
+                                Text("Confirm Password",
+                                      style: primaryFont.copyWith(
+                            fontSize: 18,
+                            color: const Color(0xff023047),
+                            fontWeight: FontWeight.w500)),
+                            const SizedBox(height: 10,),
+                            Container(
+                              height: 45,
+                              color: Colors.white,
+                              child: TextField(
+                                    decoration: InputDecoration(
+                                              isDense: true,
+                                              enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                                color: secondaryColor,
+                                              )),
+                                              focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                                color: primaryColor,
+                                              )),
+                                              hintText: "",
+                                              suffixIcon:const Icon(Icons.remove_red_eye,color: Color(0xff023047),),
+                                              labelStyle: primaryFont.copyWith(color:const Color(0xff023047),fontSize: 12)),
+                              )),
                               ],
                             ),
                           ),
-                              ],
-                            ),
-                          ),
-                          
-                           Padding(
-                        padding: const EdgeInsets.only(left: 20,right: 20,top: 30),
+                          Padding(
+                        padding: const EdgeInsets.only(left: 20,right: 20,top: 70),
                         child: InkWell(
                           onTap: (){
                             _showlog(context);
@@ -134,7 +126,7 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
                               ]
                             ),
                             child: Center(
-                                          child: Text("Log in",
+                                          child: Text("Save",
                                           style: primaryFont.copyWith(
                                             fontSize: 18,
                                             color: const Color(0xffF9FAFC),
@@ -142,36 +134,11 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
                           ),
                         ),
                       ),
-                      Text("Connect suport if you can't log in",
-                                            style: primaryFont.copyWith(
-                                  fontSize: 14,
-                                  color: const Color(0xff023047),
-                                  fontWeight: FontWeight.w500)),
-                 ],
-          ),
-        ),
+          
+        ],
       ),
     );
   }
-
-  Future<void> _dialogBuilder(BuildContext context) {
-    return showDialog<void>(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          //  title: const Text('Basic dialog title'),
-          content:  Container(
-            height: 400,
-            decoration: BoxDecoration(
-              border: Border.all(color: primaryColor)
-            ),
-            child: const Image(image: AssetImage("assets/images/Group 1578.png"))),
-         
-        );
-      },
-    );
-  }
-
   Future<void> _showlog(BuildContext context) {
     return showDialog(
         context: context,
@@ -191,29 +158,26 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Image(image: AssetImage("assets/images/Group 1578.png")),
+                    const Image(image: AssetImage("assets/images/Group 1584.png")),
                      const SizedBox(height: 15,),
-                     Text("Success",
+                     Text("Successful Password",
                                             style: primaryFont.copyWith(
                                   fontSize: 27,
                                   color: const Color(0xff023047),
                                   fontWeight: FontWeight.w600)),
                                   const SizedBox(height: 15,),
-                                   Text("Congratulations!",
+                                   Text("You can now use your new password\nto log in to your account!",
+                                   textAlign: TextAlign.center,
                                             style: primaryFont.copyWith(
                                   fontSize: 15,
                                   color: const Color(0xff023047),
                                   fontWeight: FontWeight.w500)),
-                                   Text("Your account has been Login.",
-                                            style: primaryFont.copyWith(
-                                  fontSize: 15,
-                                  color: const Color(0xff023047),
-                                  fontWeight: FontWeight.w500)),
+                                  
                                   Padding(
                       padding: const EdgeInsets.only(left: 20,right: 20,top: 30,bottom: 20),
                       child: InkWell(
                         onTap: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => const LoaderScreen()));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginFormScreen()));
                         },
                         child: Container(
                           height: 41,
@@ -231,7 +195,7 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
                             ]
                           ),
                           child: Center(
-                                        child: Text("Continue",
+                                        child: Text("Login",
                                         style: primaryFont.copyWith(
                                           fontSize: 22,
                                           color: Colors.white,
