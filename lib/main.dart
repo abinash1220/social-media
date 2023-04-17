@@ -1,6 +1,8 @@
-import 'package:flutter/material.dart';
+    import 'package:flutter/material.dart';
+import 'package:social_media_marketing/src/views/home_views/home_screen.dart';
 import 'package:social_media_marketing/src/views/login_views/login_screen.dart';
 import 'package:social_media_marketing/src/views/splash_views/Logo_screen.dart';
+import 'package:social_media_marketing/src/views/widgets/bottumnavigationbar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const LogoScreen(),
+      home:  LogoScreen(),
     );
   }
 }
