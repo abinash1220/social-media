@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
+import 'package:social_media_marketing/src/views/profile_views/profile_view_screen.dart';
 
 import '../../controllers/bottum_controller.dart';
 import '../home_views/home_page.dart';
@@ -30,15 +31,14 @@ class _HomePageState extends State<HomePage> {
     return Obx(() => Scaffold(
       body:Controller.Getindex() == 0
             ? home()
-            : Center(
-        child: Text( Controller.Getindex() == 1
-                ? 'sunny'
-                : Controller.Getindex() == 2
-                    ? 'cloudy'
-                    : Controller.Getindex() == 3
-                        ? 'profile'
-                        : 'notification'),
-      ), 
+            : Controller.Getindex() == 1
+            ? Text("") 
+            : Controller.Getindex() == 2 
+            ? Text("") 
+            : Controller.Getindex() == 3
+            ? const ProfileViewScreen() 
+            : home(), 
+           
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {},
