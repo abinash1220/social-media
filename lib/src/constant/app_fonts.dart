@@ -2,3 +2,5 @@
 import 'package:google_fonts/google_fonts.dart';
 
 var primaryFont =  GoogleFonts.lexend();
+
+var secondaryFont = GoogleFonts.roboto();

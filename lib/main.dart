@@ -1,4 +1,5 @@
     import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:social_media_marketing/src/views/home_views/home_screen.dart';
 import 'package:social_media_marketing/src/views/login_views/login_screen.dart';
 import 'package:social_media_marketing/src/views/splash_views/Logo_screen.dart';
@@ -14,13 +15,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home:  LogoScreen(),
+      home: const  LogoScreen(),
     );
   }
 }

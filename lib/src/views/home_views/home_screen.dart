@@ -6,11 +6,11 @@ import 'package:get/get.dart';
 
 import '../../controllers/bottum_controller.dart';
 
-class homepage extends StatefulWidget {
-  const homepage({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<homepage> createState() => _homepageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
 var iconList = [
@@ -20,7 +20,7 @@ var iconList = [
   Icons.people
 ];
 
-class _homepageState extends State<homepage> {
+class _HomePageState extends State<HomePage> {
   final Controller = Get.put(bottombarcontroller());
 
   var val;
