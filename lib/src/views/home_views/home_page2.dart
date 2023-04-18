@@ -8,6 +8,9 @@ import 'package:social_media_marketing/src/constant/app_colors.dart';
 
 import '../../constant/app_fonts.dart';
 import '../notification_views/notification_page.dart';
+import '../widgets/datepicker.dart';
+import '../widgets/home_post_container.dart';
+import '../widgets/listview_suggession.dart';
 
 class home2 extends StatelessWidget {
   const home2({super.key});
@@ -58,30 +61,8 @@ class home2 extends StatelessWidget {
           physics: BouncingScrollPhysics(),
           children: [
             Column(
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                      color: Colors.red,
-                      borderRadius: BorderRadius.circular(6)),
-                  height: 150,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      CalenderPicker(
-                        DateTime.now(),
-                        initialSelectedDate: DateTime.now(),
-                        selectionColor: Colors.black,
-                        selectedTextColor: Colors.white,
-                        onDateChange: (date) {
-                          // New date selected
-                          // setState(() {
-                          //   _selectedValue = date;
-                          // });
-                        },
-                      ),
-                    ],
-                  ),
-                ),
+              children: [datepickerwidget(),
+             
                 SizedBox(
                   height: 20,
                 ),
@@ -167,32 +148,7 @@ class home2 extends StatelessWidget {
                 SizedBox(
                   height: 20,
                 ),
-                Container(
-                  height: 50,
-                  width: double.infinity,
-                  color: Colors.blue,
-                  child: Padding(
-                    padding: EdgeInsets.only(right: 5, left: 5),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        CircleAvatar(
-                          backgroundImage:
-                              AssetImage('assets/images/images.jpeg'),
-                        ),
-                        Text('Control every pixel adaptive designs that lo'),
-                        Container(
-                          width: 60,
-                          height: 20,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(67),
-                              color: Colors.white),
-                          child: Center(child: Text('post')),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+                Post_container(),
                 SizedBox(
                   height: 15,
                 ),
@@ -422,46 +378,7 @@ class home2 extends StatelessWidget {
                 SizedBox(
                   height: 20,
                 ),
-                Row(
-                  children: [
-                    Column(
-                      children: [
-                        Container(
-                          height: 70,
-                          width: 74,
-                          child: Image.asset('assets/images/images.jpeg'),
-                        ),
-                        Text('Fasion design')
-                      ],
-                    ),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    Column(
-                      children: [
-                        Container(
-                          height: 70,
-                          width: 74,
-                          child: Image.asset('assets/images/images.jpeg'),
-                        ),
-                        Text('Fasion design')
-                      ],
-                    ),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    Column(
-                      children: [
-                        Container(
-                          height: 70,
-                          width: 74,
-                          child: Image.asset('assets/images/images.jpeg'),
-                        ),
-                        Text('Fasion design')
-                      ],
-                    ),
-                  ],
-                )
+                listviewsugetion(),
               ],
             ),
           ],

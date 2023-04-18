@@ -10,6 +10,9 @@ import 'package:social_media_marketing/src/views/notification_views/notification
 import '../../constant/app_colors.dart';
 import '../../constant/app_fonts.dart';
 import '../widgets/bottumnav-bar.dart';
+import '../widgets/datepicker.dart';
+import '../widgets/home_post_container.dart';
+import '../widgets/listview_suggession.dart';
 
 class home extends StatefulWidget {
   const home({super.key});
@@ -39,7 +42,7 @@ class _homeState extends State<home> {
               children: [
                 InkWell(
                   onTap: () {
-                       Get.to(notification());
+                    Get.to(notification());
                   },
                   child: Container(
                       height: 16,
@@ -62,50 +65,34 @@ class _homeState extends State<home> {
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                  color: Colors.red, borderRadius: BorderRadius.circular(6)),
-              height: 150,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  CalenderPicker(
-                    DateTime.now(),
-                    initialSelectedDate: DateTime.now(),
-                    selectionColor: Colors.black,
-                    selectedTextColor: Colors.white,
-                    onDateChange: (date) {
-                      // New date selected
-                      // setState(() {
-                      //   _selectedValue = date;
-                      // });
-                    },
-                  ),
-                ],
-              ),
-            ),
+          children: [datepickerwidget(),
+           
             SizedBox(
               height: 20,
             ),
             Container(
               width: double.infinity,
-              height: 150,
+              height: 119,
               decoration: BoxDecoration(
-                  color: Colors.grey, borderRadius: BorderRadius.circular(6)),
+                  color: Color(0xffE4E4E4),
+                  borderRadius: BorderRadius.circular(6)),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Container(
-                      height: 150,
-                      width: 150,
-                      child: Image.asset(
-                        'assets/images/Group 1584.png',
-                      )),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Image.asset(
+                    'assets/images/NoPath - Copy (2).png',
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SizedBox(
                             height: 5,
@@ -119,42 +106,26 @@ class _homeState extends State<home> {
                             height: 5,
                           ),
                           Text(
-                              'Control every pixel \nto create customized \n& adaptive designs \n '),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Image.asset(
-                                'assets/icons/twitter.png',
-                                height: 20,
+                              'Control every pixel to create\ncustomized & adaptive designs\n '),
+                          Container(
+                            height: 18,
+                            width: 58,
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(5)),
+                            child: Row(children: [
+                              Text(
+                                'Explore',
+                                style: TextStyle(
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.blueGrey),
                               ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Image.asset(
-                                'assets/icons/pinterest.png',
-                                height: 20,
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Image.asset(
-                                'assets/icons/linkedin.png',
-                                height: 20,
-                              ),
-                              SizedBox(
-                                width: 30,
-                              ),
-                              InkWell(onTap: (){  Get.to(home2());},
-                                child: Container(
-                                  width: 60,
-                                  height: 20,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(67),
-                                      color: Colors.white),
-                                  child: Center(child: Text('view')),
-                                ),
-                              ),
-                            ],
+                              Icon(
+                                Icons.arrow_right_alt,
+                                size: 17,
+                              )
+                            ]),
                           )
                         ],
                       ),
@@ -166,31 +137,7 @@ class _homeState extends State<home> {
             SizedBox(
               height: 20,
             ),
-            Container(
-              height: 50,
-              width: double.infinity,
-              color: Colors.blue,
-              child: Padding(
-                padding: EdgeInsets.only(right: 5, left: 5),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    CircleAvatar(
-                      backgroundImage: AssetImage('assets/images/images.jpeg'),
-                    ),
-                    Text('Control every pixel adaptive designs that lo'),
-                    Container(
-                      width: 60,
-                      height: 20,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(67),
-                          color: Colors.white),
-                      child: Center(child: Text('post')),
-                    ),
-                  ],
-                ),
-              ),
-            ),
+          Post_container(),
             SizedBox(
               height: 15,
             ),
@@ -213,35 +160,8 @@ class _homeState extends State<home> {
             SizedBox(
               height: 15,
             ),
-            Row(
-              children: [
-                Column(
-                  children: [
-                    Container(
-                      height: 70,
-                      width: 74,
-                      child: Image.asset('assets/images/images.jpeg'),
-                    ),
-                Text('Fasion design')  ],
-                ), SizedBox(width: 20,) ,  Column(
-                  children: [
-                    Container(
-                      height: 70,
-                      width: 74,
-                      child: Image.asset('assets/images/images.jpeg'),
-                    ),
-                Text('Fasion design')  ],
-                ), SizedBox(width: 20,) , Column(
-                  children: [
-                    Container(
-                      height: 70,
-                      width: 74,
-                      child: Image.asset('assets/images/images.jpeg'),
-                    ),
-                Text('Fasion design')  ],
-                ), 
-              ],
-            )
+            listviewsugetion()
+    
           ],
         ),
       ),

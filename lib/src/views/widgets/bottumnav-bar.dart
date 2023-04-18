@@ -7,6 +7,8 @@ import 'package:social_media_marketing/src/views/profile_views/profile_view_scre
 
 import '../../controllers/bottum_controller.dart';
 import '../home_views/home_page.dart';
+import '../home_views/home_page2.dart';
+import '../notification_views/notification_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -32,9 +34,9 @@ class _HomePageState extends State<HomePage> {
       body:Controller.Getindex() == 0
             ? home()
             : Controller.Getindex() == 1
-            ? Text("") 
+            ? home2() 
             : Controller.Getindex() == 2 
-            ? Text("") 
+            ? notification() 
             : Controller.Getindex() == 3
             ? const ProfileViewScreen() 
             : home(), 
