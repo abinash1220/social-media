@@ -43,7 +43,7 @@ class _UserProfileViewScreenState extends State<UserProfileViewScreen> {
                 },
                 child: const Icon(Icons.arrow_back,color:Color(0xffF9FAFC),)),
               const SizedBox(width: 10,),
-              Text("User Profile",
+              Text("User Profile ",
               style: primaryFont.copyWith(fontSize: 18,
               color:  Colors.white)),
             ],
