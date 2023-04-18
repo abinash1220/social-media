@@ -4,6 +4,8 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:social_media_marketing/src/views/home_views/home_page2.dart';
+import 'package:social_media_marketing/src/views/notification_views/notification_page.dart';
 
 import '../../constant/app_colors.dart';
 import '../../constant/app_fonts.dart';
@@ -37,7 +39,7 @@ class _homeState extends State<home> {
               children: [
                 InkWell(
                   onTap: () {
-                    //   Get.to(HomePage());
+                       Get.to(notification());
                   },
                   child: Container(
                       height: 16,
@@ -142,13 +144,15 @@ class _homeState extends State<home> {
                               SizedBox(
                                 width: 30,
                               ),
-                              Container(
-                                width: 60,
-                                height: 20,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(67),
-                                    color: Colors.white),
-                                child: Center(child: Text('view')),
+                              InkWell(onTap: (){  Get.to(home2());},
+                                child: Container(
+                                  width: 60,
+                                  height: 20,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(67),
+                                      color: Colors.white),
+                                  child: Center(child: Text('view')),
+                                ),
                               ),
                             ],
                           )
@@ -167,23 +171,76 @@ class _homeState extends State<home> {
               width: double.infinity,
               color: Colors.blue,
               child: Padding(
-                padding:  EdgeInsets.only( right: 5,left: 5),
-                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                padding: EdgeInsets.only(right: 5, left: 5),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     CircleAvatar(
                       backgroundImage: AssetImage('assets/images/images.jpeg'),
                     ),
-                    Text('Control every pixel adaptive designs that lo'), Container(
-                                  width: 60,
-                                  height: 20,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(67),
-                                      color: Colors.white),
-                                  child: Center(child: Text('post')),
-                                ),
+                    Text('Control every pixel adaptive designs that lo'),
+                    Container(
+                      width: 60,
+                      height: 20,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(67),
+                          color: Colors.white),
+                      child: Center(child: Text('post')),
+                    ),
                   ],
                 ),
               ),
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Sugession',
+                  style: TextStyle(
+                      color: Color(0xff023047),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 19),
+                ),
+                Text(
+                  'See All',
+                  style: TextStyle(color: Colors.blue),
+                )
+              ],
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            Row(
+              children: [
+                Column(
+                  children: [
+                    Container(
+                      height: 70,
+                      width: 74,
+                      child: Image.asset('assets/images/images.jpeg'),
+                    ),
+                Text('Fasion design')  ],
+                ), SizedBox(width: 20,) ,  Column(
+                  children: [
+                    Container(
+                      height: 70,
+                      width: 74,
+                      child: Image.asset('assets/images/images.jpeg'),
+                    ),
+                Text('Fasion design')  ],
+                ), SizedBox(width: 20,) , Column(
+                  children: [
+                    Container(
+                      height: 70,
+                      width: 74,
+                      child: Image.asset('assets/images/images.jpeg'),
+                    ),
+                Text('Fasion design')  ],
+                ), 
+              ],
             )
           ],
         ),
