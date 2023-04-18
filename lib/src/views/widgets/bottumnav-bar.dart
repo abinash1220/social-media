@@ -10,11 +10,12 @@ import '../home_views/home_page.dart';
 import '../home_views/home_page2.dart';
 import '../notification_views/notification_page.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class HomeBottomNavgationBar extends StatefulWidget {
+  int index;
+  HomeBottomNavgationBar({super.key, this.index=0});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<HomeBottomNavgationBar> createState() => _HomeBottomNavgationBarState();
 }
 
 var iconList = [
@@ -24,8 +25,15 @@ var iconList = [
   Icons.people
 ];
 
-class _HomePageState extends State<HomePage> {
+class _HomeBottomNavgationBarState extends State<HomeBottomNavgationBar> {
   final Controller = Get.put(bottombarcontroller());
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Controller.setIndex(widget.index);
+  }
 
   
   @override

@@ -37,7 +37,7 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text("Email",
+                                Text("Enter Mobile Number or Email",
                                       style: primaryFont.copyWith(
                             fontSize: 16,
                             color: const Color(0xff023047),
@@ -56,7 +56,7 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
                             borderSide: BorderSide(
                                                 color: primaryColor,
                                               )),
-                                              hintText: "yourname@gmail.com",
+                                              hintText: "Enter Mobile Number or Email",
                                               labelStyle: primaryFont.copyWith(color:const Color(0xff023047))),
                               )),
                               ],
@@ -142,11 +142,21 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
                           ),
                         ),
                       ),
-                      Text("Connect suport if you can't log in",
-                                            style: primaryFont.copyWith(
-                                  fontSize: 14,
-                                  color: const Color(0xff023047),
-                                  fontWeight: FontWeight.w500)),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("Connect support ",
+                                                style: primaryFont.copyWith(
+                                      fontSize: 14,
+                                      color: primaryColor,
+                                      fontWeight: FontWeight.w500)),
+                                      Text("if you can't log in",
+                                                style: primaryFont.copyWith(
+                                      fontSize: 14,
+                                      color: const Color(0xff023047),
+                                      fontWeight: FontWeight.w500)),
+                        ],
+                      ),
                  ],
           ),
         ),

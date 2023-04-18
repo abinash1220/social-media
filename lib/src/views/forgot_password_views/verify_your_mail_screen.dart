@@ -26,7 +26,7 @@ class _VerifyYourMailScreenState extends State<VerifyYourMailScreen> {
             Get.back();
           },
           child: const Icon(Icons.arrow_back,color: Color(0xff023047),size: 25,)),
-        title: Text("Verify Your Email",
+        title: Text("Verify Your OTP",
         style: secondaryFont.copyWith(fontSize: 18,fontWeight: FontWeight.w600,
         color: const Color(0xff023047))),
         centerTitle: true,

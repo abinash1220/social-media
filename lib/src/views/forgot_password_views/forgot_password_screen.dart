@@ -35,7 +35,7 @@ class _ForgotPassWordScreenState extends State<ForgotPassWordScreen> {
           const SizedBox(height: 20,),
           const Center(child: Image(image: AssetImage("assets/images/Group 1580.png"))),
           const SizedBox(height: 20,),
-          Text("Please Enter Your Email Address or Mobile\nNumber To Recieve a Verification Cord.",
+          Text("Please Enter Your Email Address or Mobile\nNumber To Recieve a Verification Code.",
           textAlign: TextAlign.center,
           style: secondaryFont.copyWith(fontSize: 14,fontWeight: FontWeight.w500,
           color: const Color(0xff023047),height: 2)),

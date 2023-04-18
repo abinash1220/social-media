@@ -5,6 +5,7 @@ import 'package:social_media_marketing/src/constant/app_colors.dart';
 import 'package:social_media_marketing/src/constant/app_fonts.dart';
 import 'package:social_media_marketing/src/views/login_views/login_form_screen.dart';
 import 'package:social_media_marketing/src/views/splash_views/connect_first_account_screen.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class LoaderScreen extends StatefulWidget {
   const LoaderScreen({super.key});
@@ -38,7 +39,10 @@ class _LoaderScreenState extends State<LoaderScreen> {
             child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Image(image: AssetImage("assets/images/loader.png")),
+              const SpinKitCircle(
+              color: Colors.black,
+               size: 100.0,
+                  ),
               const SizedBox(height: 20,),
               Text("Loading Screen....",style: primaryFont.copyWith(fontSize: 18,color: const Color(0xff023047)))
             ],

@@ -1,74 +1,83 @@
+import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:social_media_marketing/src/constant/app_colors.dart';
 import 'package:social_media_marketing/src/constant/app_fonts.dart';
+import 'package:social_media_marketing/src/controllers/bottum_controller.dart';
 import 'package:social_media_marketing/src/views/widgets/bottumnav-bar.dart';
 
-class ConnectFirstAccountScreen extends StatefulWidget {
-  const ConnectFirstAccountScreen({super.key});
+class AddSocialMediaScreen extends StatefulWidget {
+  const AddSocialMediaScreen({super.key});
 
   @override
-  State<ConnectFirstAccountScreen> createState() => _ConnectFirstAccountScreenState();
+  State<AddSocialMediaScreen> createState() => _AddSocialMediaScreenState();
 }
 
-class _ConnectFirstAccountScreenState extends State<ConnectFirstAccountScreen> {
+class _AddSocialMediaScreenState extends State<AddSocialMediaScreen> {
+  final Controller = Get.put(bottombarcontroller());
+
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      appBar: AppBar(
-        backgroundColor: backgroundColor,
-        elevation: 0,
-        leading: const Image(image: AssetImage("assets/icons/lg.png")),
-        title: Text("Connect First Account",
-        style: secondaryFont.copyWith(fontSize: 18,fontWeight: FontWeight.w600,
-        color: const Color(0xff023047))),
-        centerTitle: true,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 15),
-            child: Row(
-              children: [
-                InkWell(
-                  onTap: (){
-                    Get.to(HomeBottomNavgationBar());
-                  },
-                  child: Container(
-                    height: 16,
-                    width: 33,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Center(
-                      child: Text("Skip",
-                      style: primaryFont.copyWith(fontSize: 9,
-                      color: const Color(0xff219EBC))),
-                    ),
-                  ),
-                ),
-              ],
+    return Scaffold(
+          backgroundColor: backgroundColor,
+       resizeToAvoidBottomInset: false,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(50),
+        child: SafeArea(
+          child: Container(
+            height: 50,
+            decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              primaryColor,
+              secondaryColor
+            ]
+            ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.only(left: 15),
+          child: Row(
+            children: [
+              InkWell(
+                onTap: (){
+                  Get.back();
+                },
+                child: const Icon(Icons.arrow_back,color:Color(0xffF9FAFC),)),
+              const SizedBox(width: 10,),
+              Text("Add Social Media",
+              style: primaryFont.copyWith(fontSize: 18,
+              color:  Colors.white)),
+            ],
+          ),
+        ),
+          ),
+        )),
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Text("Connect Now",
+                            style: primaryFont.copyWith(fontSize: 26,
+                            fontWeight: FontWeight.w500,
+                            color: const Color(0xff023047))),
+            ),
+            const Padding(
+            padding:  EdgeInsets.only(left: 15,right: 15,),
+            child: Divider(
+              thickness: 1,
             ),
           ),
-        ],
-      ),
-      body: Column(
-        children: [
-          Center(
-            child: Padding(
-              padding: const EdgeInsets.only(top: 15,bottom: 25),
-              child: Text("Social Media lets you connect multiple\nsocial networks to monitor, post and\nschedule on the go.",
-              textAlign: TextAlign.center,
-              style: primaryFont.copyWith(fontSize: 17,
-              color: const Color(0xff023047))),
-            ),
-          ),
-          Padding(
+            Padding(
             padding: const EdgeInsets.only(left: 15,top: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                
                 Row(
                   children: [
                       const Image(image: AssetImage("assets/icons/facebook.png")),
@@ -264,8 +273,24 @@ class _ConnectFirstAccountScreenState extends State<ConnectFirstAccountScreen> {
               thickness: 1,
             ),
           ),
-        ],
+          ],
+        ),
+        floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {},
+        backgroundColor: Colors.red,
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: AnimatedBottomNavigationBar(
+          backgroundColor: Colors.red,
+          icons: iconList,
+          activeColor: Colors.white,
+          activeIndex: Controller.Getindex(),
+          gapLocation: GapLocation.center,
+          notchSmoothness: NotchSmoothness.sharpEdge,
+          leftCornerRadius: 0,
+          rightCornerRadius: 0,
+          onTap: (index) => Get.offAll(HomeBottomNavgationBar(index: index,))),
     );
   }
 }

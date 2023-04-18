@@ -1,9 +1,11 @@
+import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:social_media_marketing/src/constant/app_colors.dart';
 import 'package:social_media_marketing/src/constant/app_fonts.dart';
+import 'package:social_media_marketing/src/controllers/bottum_controller.dart';
 import 'package:social_media_marketing/src/views/widgets/bottumnav-bar.dart';
 
 class UserProfileViewScreen extends StatefulWidget {
@@ -14,6 +16,8 @@ class UserProfileViewScreen extends StatefulWidget {
 }
 
 class _UserProfileViewScreenState extends State<UserProfileViewScreen> {
+
+  final Controller = Get.put(bottombarcontroller());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +47,7 @@ class _UserProfileViewScreenState extends State<UserProfileViewScreen> {
                 },
                 child: const Icon(Icons.arrow_back,color:Color(0xffF9FAFC),)),
               const SizedBox(width: 10,),
-              Text("User Profile ",
+              Text("User Profile",
               style: primaryFont.copyWith(fontSize: 18,
               color:  Colors.white)),
             ],
@@ -129,6 +133,22 @@ class _UserProfileViewScreenState extends State<UserProfileViewScreen> {
             ],
           ),
         ),
+        floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {},
+        backgroundColor: Colors.red,
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: AnimatedBottomNavigationBar(
+          backgroundColor: Colors.red,
+          icons: iconList,
+          activeColor: Colors.white,
+          activeIndex: Controller.Getindex(),
+          gapLocation: GapLocation.center,
+          notchSmoothness: NotchSmoothness.sharpEdge,
+          leftCornerRadius: 0,
+          rightCornerRadius: 0,
+          onTap: (index) => Get.offAll(HomeBottomNavgationBar(index: index,))),
     );
   }
 }
