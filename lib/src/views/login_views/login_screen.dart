@@ -15,73 +15,81 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       backgroundColor: backgroundColor,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.only(bottom: 50,top: 20),
+          padding: const EdgeInsets.only(bottom: 50, top: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                 Column(
-                   children: [
-                     Center(
+            children: [
+              Column(
+                children: [
+                  Center(
                       child: Text("Grow your audiencce",
+                          style: primaryFont.copyWith(
+                              fontSize: 24,
+                              color: const Color(0xff023047),
+                              fontWeight: FontWeight.w500))),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  Text("Manage all your social media channels in one place",
                       style: primaryFont.copyWith(
-                        fontSize: 24,
+                        fontSize: 12,
                         color: const Color(0xff023047),
-                        fontWeight: FontWeight.w500))),
-                        const SizedBox(height: 5,),
-                         Text("Manage all your social media channels in one place",
-                   style: primaryFont.copyWith(
-                    fontSize: 12,
-                    color: const Color(0xff023047),
-                    )),
-                   ],
-                 ),
-                  
-                    const SizedBox(height: 30,),
-                    const Image(image: AssetImage("assets/images/Group 1259.png")),
-                    const SizedBox(height: 30,),
-                   Text("1. Connect Multiple social channels\n2. Publish and Schedule to all channels\n3. See performance with a simple score",
-                   style: primaryFont.copyWith(
+                      )),
+                ],
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              const Image(image: AssetImage("assets/images/Group 1259.png")),
+              const SizedBox(
+                height: 30,
+              ),
+              Text(
+                  "1. Connect Multiple social channels\n2. Publish and Schedule to all channels\n3. See performance with a simple score",
+                  style: primaryFont.copyWith(
                     fontSize: 16,
                     height: 2,
                     color: const Color(0xff023047),
-                    )),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20,right: 20,top: 30),
-                      child: InkWell(
-                        onTap: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginFormScreen()));
-                        },
-                        child: Container(
-                          height: 41,
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(color: secondaryColor),
-                            borderRadius: BorderRadius.circular(20),
-                            boxShadow:const [
-                              BoxShadow(
-                                offset: Offset(0, 1),
-                                blurRadius: 3.20,
-                                spreadRadius: 0.50,
-                                color: Color.fromARGB(255, 247, 114, 158),
-                              )
-                            ]
-                          ),
-                          child: Center(
-                                        child: Text("Log in",
-                                        style: primaryFont.copyWith(
-                                          fontSize: 18,
-                                          color: const Color(0xffFF5895),
-                                          fontWeight: FontWeight.w500))),
-                        ),
-                      ),
-                    ),
-              ],
+                  )),
+              Padding(
+                padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
+                child: InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const LoginFormScreen()));
+                  },
+                  child: Container(
+                    height: 41,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(color: secondaryColor),
+                        borderRadius: BorderRadius.circular(20),
+                        boxShadow: const [
+                          BoxShadow(
+                            offset: Offset(0, 1),
+                            blurRadius: 3.20,
+                            spreadRadius: 0.50,
+                            color: Color.fromARGB(255, 247, 114, 158),
+                          )
+                        ]),
+                    child: Center(
+                        child: Text("Log in",
+                            style: primaryFont.copyWith(
+                                fontSize: 18,
+                                color: const Color(0xffFF5895),
+                                fontWeight: FontWeight.w500))),
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),
