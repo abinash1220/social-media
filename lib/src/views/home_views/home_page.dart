@@ -94,27 +94,35 @@ class _homeState extends State<home> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             height: 5,
                           ),
                           Text(
                             'New Brand Post',
-                            style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold),
+                             style: secondaryFont.copyWith(fontSize: 14,
+                               fontWeight: FontWeight.w600,
+                               color: Colors.black),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 5,
                           ),
                           Text(
-                              'Control every pixel to create\ncustomized & adaptive designs\n '),
+                              'Lorem ipsum dolor sit amet, consectetur\nadipiscing elit, sed do eiusmod tempor\nincididunt ut labore et dolore magna aliqua.\nUtenim ad minim veniam, quis nostrud',
+                               style: secondaryFont.copyWith(fontSize: 10,
+                               fontWeight: FontWeight.w500,
+                               height: 1.5,
+                               color: Colors.black),
+                              ),
                           Container(
                             height: 18,
                             width: 58,
                             decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(5)),
-                            child: Row(children: [
-                              Text(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children:const [
+                               Text(
                                 'Explore',
                                 style: TextStyle(
                                     fontSize: 10,

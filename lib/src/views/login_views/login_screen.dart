@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:social_media_marketing/src/constant/app_colors.dart';
 import 'package:social_media_marketing/src/constant/app_fonts.dart';
 import 'package:social_media_marketing/src/views/login_views/login_form_screen.dart';
+import 'package:social_media_marketing/src/views/register_views/register_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -77,6 +78,37 @@ class _LoginScreenState extends State<LoginScreen> {
                                         style: primaryFont.copyWith(
                                           fontSize: 18,
                                           color: const Color(0xffFF5895),
+                                          fontWeight: FontWeight.w500))),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20,right: 20,top: 10),
+                      child: InkWell(
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => const RegisterScreen()));
+                        },
+                        child: Container(
+                          height: 41,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(color: const Color(0xff023047)),
+                            borderRadius: BorderRadius.circular(20),
+                            boxShadow:const [
+                              BoxShadow(
+                                offset: Offset(0, 1),
+                                blurRadius: 3.20,
+                                spreadRadius: 0.50,
+                                color:  Color(0xff023047),
+                              )
+                            ]
+                          ),
+                          child: Center(
+                                        child: Text("Sign up",
+                                        style: primaryFont.copyWith(
+                                          fontSize: 18,
+                                          color: const Color(0xff023047),
                                           fontWeight: FontWeight.w500))),
                         ),
                       ),

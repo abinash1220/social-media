@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:social_media_marketing/src/constant/app_colors.dart';
 import 'package:social_media_marketing/src/constant/app_fonts.dart';
 import 'package:social_media_marketing/src/views/forgot_password_views/forgot_password_screen.dart';
+import 'package:social_media_marketing/src/views/register_views/register_screen.dart';
 import 'package:social_media_marketing/src/views/splash_views/loader_screen.dart';
 
 class LoginFormScreen extends StatefulWidget {
@@ -25,12 +26,24 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
                  children: [
-                  Center(
-                        child: Text("Log In",
+                  Column(
+                    children: [
+                      Center(
+                            child: Text("Log In Now",
+                            style: primaryFont.copyWith(
+                              fontSize: 26,
+                              color: const Color(0xff023047),
+                              fontWeight: FontWeight.w600))),
+                              const SizedBox(height: 7,),
+                               Center(
+                        child: Text("Please login to continue using our app",
                         style: primaryFont.copyWith(
-                          fontSize: 26,
+                          fontSize: 13,
                           color: const Color(0xff023047),
-                          fontWeight: FontWeight.w600))),
+                          fontWeight: FontWeight.w400))),
+                    ],
+                  ),
+                           
                           const Image(image: AssetImage("assets/images/Group 1577.png")),
                           Padding(
                             padding: const EdgeInsets.only(left: 20,right: 20),
@@ -145,16 +158,25 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text("Connect support ",
-                                                style: primaryFont.copyWith(
-                                      fontSize: 14,
-                                      color: primaryColor,
-                                      fontWeight: FontWeight.w500)),
-                                      Text("if you can't log in",
+                          Text('''Don't have an account? ''',
                                                 style: primaryFont.copyWith(
                                       fontSize: 14,
                                       color: const Color(0xff023047),
                                       fontWeight: FontWeight.w500)),
+                                      InkWell(
+                                        onTap: (){
+                                          Get.to(const RegisterScreen());
+                                        },
+                                        child: Text("Sign Up",
+                                                  style: TextStyle(
+                                                    fontSize: 14,
+                                                    color: secondaryColor,
+                                                    fontWeight: FontWeight.w500,
+                                                    decoration: TextDecoration.underline
+                                                  ),
+                                        
+                                        ),
+                                      ),
                         ],
                       ),
                  ],

@@ -1,9 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:get/get.dart';
-import 'package:social_media_marketing/src/constant/app_colors.dart';
-import 'package:social_media_marketing/src/constant/app_fonts.dart';
 
 class SuggestionScreen extends StatefulWidget {
   const SuggestionScreen({super.key});
@@ -13,68 +8,184 @@ class SuggestionScreen extends StatefulWidget {
 }
 
 class _SuggestionScreenState extends State<SuggestionScreen> {
-  
-   List festiveimage = [
-    'lib/assets/beach.png',
-    'lib/assets/3image.png',
-    'lib/assets/2image.png',
-    'lib/assets/4image.png',
-    'lib/assets/againimage.png',
+  List festiveimage = [
+    'assets/images/beach.png',
+    'assets/images/3image.png',
+    'assets/images/2image.png',
+    'assets/images/4image.png',
+    'assets/images/againimage.png',
   ];
   List eventsimage = [
-    'lib/assets/9image.png',
-    'lib/assets/8image.png',
-    'lib/assets/7image.png',
-    'lib/assets/10image.png',
-    'lib/assets/againimage2.png'
+    'assets/images/9image.png',
+    'assets/images/8image.png',
+    'assets/images/7image.png',
+    'assets/images/10image.png',
+    'assets/images/againimage2.png'
   ];
   List businessimage = [
-    'lib/assets/11image.png',
-    'lib/assets/12image.png',
-    'lib/assets/13image.png',
-    'lib/assets/14image.png',
-    'lib/assets/againimage3.png'
+    'assets/images/11image.png',
+    'assets/images/12image.png',
+    'assets/images/13image.png',
+    'assets/images/14image.png',
+    'assets/images/againimage3.png'
   ];
   List subtitile = ['Post01', "Post02", 'Post03', 'Post04', 'Post05'];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: backgroundColor,
-       resizeToAvoidBottomInset: false,
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(50),
-        child: SafeArea(
-          child: Container(
-            height: 50,
-            decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              primaryColor,
-              secondaryColor
-            ]
-            ),
+        appBar: AppBar(
+          backgroundColor: Colors.pink[400],
         ),
-        child: Padding(
-          padding: const EdgeInsets.only(left: 15),
-          child: Row(
+        body: SafeArea(
+          child: Column(
             children: [
-              InkWell(
-                onTap: (){
-                  Get.back();
-                },
-                child: const Icon(Icons.arrow_back,color:Color(0xffF9FAFC),)),
-              const SizedBox(width: 10,),
-              Text("Password Change",
-              style: primaryFont.copyWith(fontSize: 18,
-              color:  Colors.white)),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: [
+                  Text(
+                    '   Festival Posts',
+                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 25,
+              ),
+              listimage(),
+              SizedBox(
+                height: 15,
+              ),
+              Row(
+                children: [
+                  Text(
+                    '   Events Posts',
+                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 25,
+              ),
+              listimage2(),
+              SizedBox(
+                height: 15,
+              ),
+              Row(
+                children: [
+                  Text(
+                    '   Business Posts',
+                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  )
+                ],
+              ),
+              SizedBox(
+                height: 25,
+              ),
+              listimage3()
             ],
           ),
         ),
-          ),
-        )),
+        bottomNavigationBar: FloatingActionButton(
+          backgroundColor: Colors.pink[400],
+          child: Icon(Icons.add),
+          onPressed: () {
+          //Navigator.of(context)
+              //.push(MaterialPageRoute(builder: (context) => CreateScreen()));
+        }));
+  }
+
+  Widget listimage() {
+    return Container(
+      height: 150,
+      child: ListView.builder(
+          itemCount: festiveimage.length,
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (context, Index) {
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Card(
+                        child: Image.asset(
+                      festiveimage[Index],
+                      height: 69,
+                      width: 71,
+                      fit: BoxFit.fitHeight,
+                    )),
+                    Text(
+                      subtitile[Index],
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          }),
+    );
+  }
+
+  Widget listimage2() {
+    return Container(
+      height: 150,
+      child: ListView.builder(
+          itemCount: eventsimage.length,
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (context, Index) {
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Card(
+                        child: Image.asset(
+                      eventsimage[Index],
+                      height: 69,
+                      width: 71,
+                      fit: BoxFit.fitHeight,
+                    )),
+                    Text(
+                      subtitile[Index],
+                      style: TextStyle(color: Colors.grey),
+                    )
+                  ],
+                ),
+              ),
+            );
+          }),
+    );
+  }
+
+  Widget listimage3() {
+    return Container(
+      height: 150,
+      child: ListView.builder(
+          itemCount: businessimage.length,
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (context, Index) {
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Card(
+                        child: Image.asset(
+                      businessimage[Index],
+                      height: 69,
+                      width: 71,
+                      fit: BoxFit.fitHeight,
+                    )),
+                    Text(
+                      subtitile[Index],
+                      style: TextStyle(color: Colors.grey),
+                    )
+                  ],
+                ),
+              ),
+            );
+          }),
     );
   }
 }
