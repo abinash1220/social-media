@@ -16,37 +16,43 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       backgroundColor: backgroundColor,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.only(bottom: 50,top: 20),
+          padding: const EdgeInsets.only(bottom: 50, top: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                 Column(
-                   children: [
-                     Center(
+            children: [
+              Column(
+                children: [
+                  Center(
                       child: Text("Grow your audiencce",
+                          style: primaryFont.copyWith(
+                              fontSize: 24,
+                              color: const Color(0xff023047),
+                              fontWeight: FontWeight.w500))),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  Text("Manage all your social media channels in one place",
                       style: primaryFont.copyWith(
-                        fontSize: 24,
+                        fontSize: 12,
                         color: const Color(0xff023047),
-                        fontWeight: FontWeight.w500))),
-                        const SizedBox(height: 5,),
-                         Text("Manage all your social media channels in one place",
-                   style: primaryFont.copyWith(
-                    fontSize: 12,
-                    color: const Color(0xff023047),
-                    )),
-                   ],
-                 ),
-                  
-                    const SizedBox(height: 30,),
-                    const Image(image: AssetImage("assets/images/Group 1259.png")),
-                    const SizedBox(height: 30,),
-                   Text("1. Connect Multiple social channels\n2. Publish and Schedule to all channels\n3. See performance with a simple score",
-                   style: primaryFont.copyWith(
+                      )),
+                ],
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              const Image(image: AssetImage("assets/images/Group 1259.png")),
+              const SizedBox(
+                height: 30,
+              ),
+              Text(
+                  "1. Connect Multiple social channels\n2. Publish and Schedule to all channels\n3. See performance with a simple score",
+                  style: primaryFont.copyWith(
                     fontSize: 16,
                     height: 2,
                     color: const Color(0xff023047),

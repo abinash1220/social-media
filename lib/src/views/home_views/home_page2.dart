@@ -11,8 +11,11 @@ import '../notification_views/notification_page.dart';
 import '../widgets/datepicker.dart';
 import '../widgets/home_post_container.dart';
 import '../widgets/listview_suggession.dart';
+import '../widgets/newbrant_container.dart';
+import '../widgets/viewbuttuon_socialmedia.dart';
 
 class home2 extends StatelessWidget {
+
   const home2({super.key});
 
   @override
@@ -61,30 +64,34 @@ class home2 extends StatelessWidget {
           physics: BouncingScrollPhysics(),
           children: [
             Column(
-              children: [datepickerwidget(),
-             
+              children: [
+                datepickerwidget(),
                 SizedBox(
-                  height: 20,
+                  height: 30,
                 ),
                 Container(
                   width: double.infinity,
-                  height: 150,
+                  height: 119,
                   decoration: BoxDecoration(
-                      color: Colors.grey,
+                      color: Color(0xffE4E4E4),
                       borderRadius: BorderRadius.circular(6)),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Container(
-                          height: 150,
-                          width: 150,
-                          child: Image.asset(
-                            'assets/images/Group 1584.png',
-                          )),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Image.asset(
+                        'assets/images/NoPath - Copy (2).png',
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               SizedBox(
                                 height: 5,
@@ -98,52 +105,17 @@ class home2 extends StatelessWidget {
                                 height: 5,
                               ),
                               Text(
-                                  'Control every pixel \nto create customized \n& adaptive designs \n '),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Image.asset(
-                                    'assets/icons/twitter.png',
-                                    height: 20,
-                                  ),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Image.asset(
-                                    'assets/icons/pinterest.png',
-                                    height: 20,
-                                  ),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Image.asset(
-                                    'assets/icons/linkedin.png',
-                                    height: 20,
-                                  ),
-                                  SizedBox(
-                                    width: 30,
-                                  ),
-                                  InkWell(
-                                    //onTap: (){  Get.to(home2());},
-                                    child: Container(
-                                      width: 60,
-                                      height: 20,
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(67),
-                                          color: Colors.white),
-                                      child: Center(child: Text('view')),
-                                    ),
-                                  ),
-                                ],
-                              )
+                                  'Control every pixel to create\ncustomized & adaptive designs\n '),
+                              view_socialmedia()
                             ],
                           ),
                         ],
-                      )
+                      ),
                     ],
                   ),
+                ),
+                SizedBox(
+                  height: 20,
                 ),
                 SizedBox(
                   height: 20,
@@ -173,84 +145,7 @@ class home2 extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(3.0),
-                  child: Container(
-                    width: double.infinity,
-                    height: 150,
-                    decoration: BoxDecoration(
-                        boxShadow: [
-                          new BoxShadow(
-                            color: Colors.grey,
-                            blurRadius: 5.0,
-                          ),
-                        ],
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(6)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Container(
-                            height: 150,
-                            width: 150,
-                            child: Image.asset(
-                              'assets/images/Group 1584.png',
-                            )),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Column(
-                              children: [
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      'New Brand Post',
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                 Icon(Icons.more_vert) ],
-                                ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Text(
-                                    'Control every pixel \nto create customized \n& adaptive designs \n '),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Image.asset(
-                                      'assets/icons/twitter.png',
-                                      height: 20,
-                                    ),
-                                    SizedBox(
-                                      width: 10,
-                                    ),
-                                    Image.asset(
-                                      'assets/icons/pinterest.png',
-                                      height: 20,
-                                    ),
-                                    SizedBox(
-                                      width: 10,
-                                    ),
-                                    Image.asset(
-                                      'assets/icons/linkedin.png',
-                                      height: 20,
-                                    ),
-                                    SizedBox(
-                                      width: 30,
-                                    ),
-                                  ],
-                                )
-                              ],
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
+                 child: newbrandcontainer(),
                 ),
                 SizedBox(
                   height: 15,
@@ -276,85 +171,7 @@ class home2 extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(3.0),
-                  child: Container(
-                    width: double.infinity,
-                    height: 150,
-                    decoration: BoxDecoration(
-                        boxShadow: [
-                          new BoxShadow(
-                            color: Colors.grey,
-                            blurRadius: 5.0,
-                          ),
-                        ],
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(6)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Container(
-                          height: 150,
-                          width: 150,
-                          child: Image.asset(
-                            'assets/images/Group 1584.png',
-                          ),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Column(
-                              children: [
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      'New Brand Post',
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                 Icon(Icons.more_vert) ],
-                                ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Text(
-                                    'Control every pixel \nto create customized \n& adaptive designs \n '),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Image.asset(
-                                      'assets/icons/twitter.png',
-                                      height: 20,
-                                    ),
-                                    SizedBox(
-                                      width: 10,
-                                    ),
-                                    Image.asset(
-                                      'assets/icons/pinterest.png',
-                                      height: 20,
-                                    ),
-                                    SizedBox(
-                                      width: 10,
-                                    ),
-                                    Image.asset(
-                                      'assets/icons/linkedin.png',
-                                      height: 20,
-                                    ),
-                                    SizedBox(
-                                      width: 30,
-                                    ),
-                                  ],
-                                )
-                              ],
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
+                  child:newbrandcontainer() ,
                 ),
                 SizedBox(
                   height: 20,

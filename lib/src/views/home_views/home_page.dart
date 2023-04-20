@@ -65,8 +65,8 @@ class _homeState extends State<home> {
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
-          children: [datepickerwidget(),
-           
+          children: [
+            datepickerwidget(),
             SizedBox(
               height: 20,
             ),
@@ -138,14 +138,14 @@ class _homeState extends State<home> {
                         ],
                       ),
                     ],
-                  )
+                  ),
                 ],
               ),
             ),
             SizedBox(
               height: 20,
             ),
-          Post_container(),
+            Post_container(),
             SizedBox(
               height: 15,
             ),
@@ -169,7 +169,6 @@ class _homeState extends State<home> {
               height: 15,
             ),
             listviewsugetion()
-    
           ],
         ),
       ),
