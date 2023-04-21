@@ -5,6 +5,7 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:social_media_marketing/src/constant/app_colors.dart';
+import 'package:social_media_marketing/src/views/recent_post_views/recent_post_screen.dart';
 
 import '../../constant/app_fonts.dart';
 import '../notification_views/notification_page.dart';
@@ -38,7 +39,7 @@ class home2 extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: () {
-                    Get.to(notification());
+                    Get.to(const notification());
                   },
                   child: Container(
                       height: 16,
@@ -47,7 +48,7 @@ class home2 extends StatelessWidget {
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(8),
                       ),
-                      child: Center(
+                      child:const Center(
                           child: Icon(
                         Icons.search,
                         color: Colors.black,
@@ -61,30 +62,30 @@ class home2 extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: ListView(
-          physics: BouncingScrollPhysics(),
+          physics:const BouncingScrollPhysics(),
           children: [
             Column(
               children: [
-                datepickerwidget(),
-                SizedBox(
+                const datepickerwidget(),
+                const SizedBox(
                   height: 30,
                 ),
                 Container(
                   width: double.infinity,
                   height: 119,
                   decoration: BoxDecoration(
-                      color: Color(0xffE4E4E4),
+                      color:const Color(0xffE4E4E4),
                       borderRadius: BorderRadius.circular(6)),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         width: 10,
                       ),
                       Image.asset(
                         'assets/images/NoPath - Copy (2).png',
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 20,
                       ),
                       Row(
@@ -92,8 +93,8 @@ class home2 extends StatelessWidget {
                         children: [
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              SizedBox(
+                            children:const [
+                               SizedBox(
                                 height: 5,
                               ),
                               Text(
@@ -134,9 +135,14 @@ class home2 extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                           fontSize: 19),
                     ),
-                    Text(
-                      'See All',
-                      style: TextStyle(color: Colors.blue),
+                    InkWell(
+                      onTap: (){
+                        Get.to(RecentPostScreen());
+                      },
+                      child: Text(
+                        'See All',
+                        style: TextStyle(color: Colors.blue),
+                      ),
                     )
                   ],
                 ),

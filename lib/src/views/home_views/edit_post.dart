@@ -4,18 +4,16 @@ import 'package:get/get.dart';
 import 'package:social_media_marketing/src/constant/app_colors.dart';
 import 'package:social_media_marketing/src/constant/app_fonts.dart';
 import 'package:social_media_marketing/src/controllers/bottum_controller.dart';
-import 'package:social_media_marketing/src/views/home_views/edit_post.dart';
-import 'package:social_media_marketing/src/views/recent_post_views/edit_post_screen.dart';
 import 'package:social_media_marketing/src/views/widgets/bottumnav-bar.dart';
 
-class CreateScreen extends StatefulWidget {
-  const CreateScreen({super.key});
+class EditScreen extends StatefulWidget {
+  const EditScreen({super.key});
 
   @override
-  State<CreateScreen> createState() => _CreateScreenState();
+  State<EditScreen> createState() => _EditScreenState();
 }
 
-class _CreateScreenState extends State<CreateScreen> {
+class _EditScreenState extends State<EditScreen> {
   final Controller = Get.put(bottombarcontroller());
   @override
   Widget build(BuildContext context) {
@@ -41,8 +39,12 @@ class _CreateScreenState extends State<CreateScreen> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Image(image: AssetImage("assets/icons/lg.png")),
-              Text("Create",
+              InkWell(
+                onTap: (){
+                  Get.back();
+                },
+                child: const Icon(Icons.arrow_back,color:Color(0xffF9FAFC),)),
+              Text("Edit Post",
               style: primaryFont.copyWith(fontSize: 18,
               color:  Colors.white)),
                Container(
@@ -182,6 +184,9 @@ class _CreateScreenState extends State<CreateScreen> {
                     decoration: BoxDecoration(
                         color:const Color.fromARGB(255, 227, 225, 225),
                         borderRadius: BorderRadius.circular(10)),
+                        child: ClipRRect(
+                          borderRadius:BorderRadius.circular(10) ,
+                          child: Image.asset('assets/icons/editpostimage.png',fit: BoxFit.cover,)),
                   ),
                 ],
               ),
@@ -225,7 +230,7 @@ class _CreateScreenState extends State<CreateScreen> {
                     children: [
                       Image.asset('assets/icons/logation.png',height: 18,),
                       const SizedBox(width: 4,),
-                      Text("Logations",
+                      Text("Chennai",
                     style: primaryFont.copyWith(
                       fontSize: 10,
                       fontWeight: FontWeight.w400,
@@ -281,9 +286,7 @@ class _CreateScreenState extends State<CreateScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: () {
-          Get.to(EditScreen());
-        },
+        onPressed: () {},
         backgroundColor: const Color(0xffED075C),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

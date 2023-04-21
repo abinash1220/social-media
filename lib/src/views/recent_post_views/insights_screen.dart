@@ -1,5 +1,12 @@
+import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:spline_chart/spline_chart.dart';
+import 'package:get/get.dart';
+import 'package:social_media_marketing/src/constant/app_colors.dart';
+import 'package:social_media_marketing/src/constant/app_fonts.dart';
+import 'package:social_media_marketing/src/controllers/bottum_controller.dart';
+import 'package:social_media_marketing/src/views/home_views/create_post.dart';
+import 'package:social_media_marketing/src/views/widgets/bottumnav-bar.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 
 class InSightsScreen extends StatefulWidget {
   const InSightsScreen({super.key});
@@ -9,15 +16,69 @@ class InSightsScreen extends StatefulWidget {
 }
 
 class _InSightsScreenState extends State<InSightsScreen> {
+  final Controller = Get.put(bottombarcontroller());
+
+  List<_SalesData> data = [
+    _SalesData('Mon'.tr, 5000),
+    _SalesData('Tue'.tr, 3000),
+    _SalesData('Wed'.tr, 4000),
+    _SalesData('Thu'.tr, 7000),
+    _SalesData('Fri'.tr, 3000)
+  ];
+
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.pink[400],
-        title: Text('Insights'),
-        actions: [Image.asset('icons/insightsimage.png')],
-      ),
-      body: Column(
+     backgroundColor: backgroundColor,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(50),
+        child: SafeArea(
+          child: Container(
+            height: 50,
+            decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              primaryColor,
+              secondaryColor
+            ]
+            ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.only(left: 15,right: 15),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              InkWell(
+                onTap: (){
+                  Get.back();
+                },
+                child: const Icon(Icons.arrow_back,color:Color(0xffF9FAFC),)),
+              Text("Insights",
+              style: primaryFont.copyWith(fontSize: 18,
+              color:  Colors.white)),
+              InkWell(
+                onTap: (){
+                  // showModalBottomSheet(context: context, builder: (BuildContext context) {
+                  //   return Container(
+                  //     height: 350,
+                  //     decoration: BoxDecoration(
+                  //        color: Colors.white,
+                  //       borderRadius: BorderRadius.only(topLeft: Radius.circular(14),topRight: Radius.circular(14))
+                  //     ),
+                  //   );
+                  // });
+                },
+                child: Image.asset('assets/icons/insightsimage.png')),
+            ],
+          ),
+        ),
+          ),
+        )),
+      
+      body: ListView(
         children: [
           SizedBox(
             height: 20,
@@ -56,7 +117,7 @@ class _InSightsScreenState extends State<InSightsScreen> {
                             padding:
                                 const EdgeInsets.only(bottom: 20, right: 20),
                             child: Image.asset(
-                              'icons/insightsimage2.png',
+                              'assets/icons/insightsimage2.png',
                             ),
                           ),
                           Column(
@@ -280,11 +341,11 @@ class _InSightsScreenState extends State<InSightsScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Image.asset('icons/intractionimage.png'),
-              Image.asset('icons/intractionimage2.png'),
-              Image.asset('icons/intractionimage3.png'),
-              Image.asset('icons/intractionimage4.png'),
-              Image.asset('icons/intractionimage5.png')
+              Image.asset('assets/icons/intractionimage.png'),
+              Image.asset('assets/icons/intractionimage2.png'),
+              Image.asset('assets/icons/intractionimage3.png'),
+              Image.asset('assets/icons/intractionimage4.png'),
+              Image.asset('assets/icons/intractionimage5.png')
             ],
           ),
           SizedBox(
@@ -303,25 +364,115 @@ class _InSightsScreenState extends State<InSightsScreen> {
           SizedBox(
             height: 25,
           ),
-          GestureDetector(
-            onTap: () {
-             // Navigator.of(context).push(
-                //  MaterialPageRoute(builder: (context) => SearchPostScreen()));
-            },
-            child: SplineChart(
-              values: {0: 0, 15: 3},
-              verticalLineEnabled: true,
-              verticalLinePosition: 90.0,
-              verticalLineStrokeWidth: 2.0,
-              verticalLineText: "The middle",
-              drawCircles: false,
-              circleRadius: 5,
-              width: MediaQuery.of(context).size.width,
-              height: 300,
+          Padding(
+            padding: const EdgeInsets.only(left: 15, right: 15),
+            child: Container(
+              height: 185,
+              width: size.width,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  gradient: const LinearGradient(
+                      begin: Alignment.bottomLeft,
+                      end: Alignment.topRight,
+                      colors: [
+                        Color.fromARGB(255, 248, 181, 167),
+                        Color.fromARGB(255, 248, 143, 136),
+                      ])
+                      ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(top: 10, left: 10, right: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Total Sale".tr,
+                          style: primaryFont.copyWith(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15),
+                        ),
+                        Text(
+                          "\$12,000",
+                          style: primaryFont.copyWith(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 10),
+                    child: Container(
+                      height: 150,
+                      child: SfCartesianChart(
+                        // Chart title
+                        // Enable legend
+                        // legend: Legend(isVisible: true,),
+                        // Enable tooltip
+                        tooltipBehavior: TooltipBehavior(
+                          enable: true,
+                        ),
+                        series: <ChartSeries<_SalesData, String>>[
+                          StackedLineSeries<_SalesData, String>(
+                              color: Colors.white,
+                              dataSource: data,
+                              xValueMapper: (_SalesData sales, _) => sales.year,
+                              yValueMapper: (_SalesData sales, _) =>
+                                  sales.sales,
+                              // name: 'Sales',
+                              markerSettings:
+                                  const MarkerSettings(isVisible: true))
+                          // Enable data label
+                          //dataLabelSettings: DataLabelSettings(isVisible: true,color: Colors.amber))
+                        ],
+                        primaryXAxis: CategoryAxis(
+                            labelStyle: const TextStyle(color: Colors.white)),
+                        primaryYAxis: CategoryAxis(
+                          labelStyle: const TextStyle(color: Colors.white),
+                          minimum: 0,
+                          maximum: 10000,
+                          desiredIntervals: 5,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          )
+          ),
         ],
       ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+       onPressed: () {
+          Get.to(const CreateScreen());
+        },
+        backgroundColor:const Color(0xff75032D),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: AnimatedBottomNavigationBar(
+          backgroundColor: const Color(0xffED075C),
+          icons: iconList,
+          activeColor: Colors.white,
+          activeIndex: Controller.Getindex(),
+          gapLocation: GapLocation.center,
+          notchSmoothness: NotchSmoothness.sharpEdge,
+          leftCornerRadius: 0,
+          rightCornerRadius: 0,
+          onTap: (index) => Get.offAll(HomeBottomNavgationBar(index: index,))),
     );
   }
+
+  
+}
+
+class _SalesData {
+  _SalesData(this.year, this.sales);
+  final String year;
+  final double sales;
 }

@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
+import 'package:social_media_marketing/src/constant/app_colors.dart';
+import 'package:social_media_marketing/src/views/home_views/create_post.dart';
+import 'package:social_media_marketing/src/views/planner_views/planner_screen.dart';
 import 'package:social_media_marketing/src/views/profile_views/profile_view_screen.dart';
 
 import '../../controllers/bottum_controller.dart';
@@ -40,23 +43,25 @@ class _HomeBottomNavgationBarState extends State<HomeBottomNavgationBar> {
   Widget build(BuildContext context) {
     return Obx(() => Scaffold(
       body:Controller.Getindex() == 0
-            ? home()
+            ? const home()
             : Controller.Getindex() == 1
-            ? home2() 
+            ? const PlannerScreen() 
             : Controller.Getindex() == 2 
-            ? notification() 
+            ? const notification() 
             : Controller.Getindex() == 3
             ? const ProfileViewScreen() 
             : home(), 
            
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: () {},
-        backgroundColor: Colors.red,
+        onPressed: () {
+          Get.to(const CreateScreen());
+        },
+        backgroundColor:const Color(0xff75032D),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: AnimatedBottomNavigationBar(
-          backgroundColor: Colors.red,
+          backgroundColor: const Color(0xffED075C),
           icons: iconList,
           activeColor: Colors.white,
           activeIndex: Controller.Getindex(),

@@ -1,15 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:social_media_marketing/src/constant/app_colors.dart';
+import 'package:social_media_marketing/src/constant/app_fonts.dart';
 
 class notification extends StatelessWidget {
   const notification({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(backgroundColor: Colors.red,title: Text('Notification'),), body: ListView.separated(
+    return Scaffold(
+      backgroundColor: backgroundColor,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(50),
+        child: SafeArea(
+          child: Container(
+            height: 50,
+            decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              primaryColor,
+              secondaryColor
+            ]
+            ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.only(left: 15),
+          child: Row(
+            children: [
+              Text("Notification",
+              style: primaryFont.copyWith(fontSize: 18,
+              color:  Colors.white)),
+            ],
+          ),
+        ),
+          ),
+        )), 
+      body: ListView.separated(
         physics: BouncingScrollPhysics(),
-        itemCount: 20,
+        itemCount: 10,
         itemBuilder: (BuildContext context, int index) {
           return GestureDetector(
             onTap: () {},

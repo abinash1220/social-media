@@ -2,38 +2,44 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:social_media_marketing/src/constant/app_colors.dart';
+import 'package:social_media_marketing/src/constant/app_fonts.dart';
 
 class Post_container extends StatelessWidget {
   const Post_container({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     return   Container(
               height: 50,
-              width: double.infinity,
-              color: Color(0xFFA35ED8),
+              width: size.width,
+              decoration: BoxDecoration(
+                color:const Color(0xFFA35ED8),
+                borderRadius: BorderRadius.circular(2)
+              ),
+              
               child: Padding(
-                padding: EdgeInsets.only(right: 5, left: 5),
+                padding:const EdgeInsets.only(right: 5, left: 5),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    CircleAvatar(
-                      backgroundImage: AssetImage('assets/images/images.jpeg'),
+                    const CircleAvatar(
+                      backgroundImage: AssetImage('assets/icons/Group 1103.png'),
                     ),
-                    Text('Control every pixel adaptive designs that lo'),
+                     Text("New Post Generate Just Approve Post uploads.",
+        style: primaryFont.copyWith(fontSize: 10,
+        color: Colors.white)),
                     Container(
                       width: 60,
                       height: 20,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(67),
+                          borderRadius: BorderRadius.circular(10),
                           color: Colors.white),
                       child: Center(
-                          child: Text(
-                        'post',
-                        style: TextStyle(
-                          color: Color(0xFFA35ED8),
-                        ),
-                      )),
+                          child: Text("Post",
+                          style: primaryFont.copyWith(fontSize: 10,
+                          color: primaryColor))),
                     ),
                   ],
                 ),

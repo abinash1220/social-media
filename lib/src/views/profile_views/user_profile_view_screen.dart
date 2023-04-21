@@ -140,7 +140,7 @@ class _UserProfileViewScreenState extends State<UserProfileViewScreen> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: AnimatedBottomNavigationBar(
-          backgroundColor: Colors.red,
+          backgroundColor: secondaryColor,
           icons: iconList,
           activeColor: Colors.white,
           activeIndex: Controller.Getindex(),

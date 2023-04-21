@@ -1,10 +1,12 @@
 import 'package:calender_picker/date_picker_widget.dart';
+import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:social_media_marketing/src/views/home_views/home_page2.dart';
+import 'package:social_media_marketing/src/views/home_views/suggestions_screen.dart';
 import 'package:social_media_marketing/src/views/notification_views/notification_page.dart';
 
 import '../../constant/app_colors.dart';
@@ -22,6 +24,58 @@ class home extends StatefulWidget {
 }
 
 class _homeState extends State<home> {
+
+  DateTime date = DateTime.now();
+
+  String selectdt =
+      formatDate(DateTime(DateTime.now().year, DateTime.now().month, 01), [
+    yyyy,
+    "-",
+    mm,
+    "-",
+    dd,
+  ]);
+
+  _showDatePicker(BuildContext context) async {
+    DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: DateTime.now(),
+        firstDate: DateTime(2000),
+        lastDate: DateTime(2030),
+        builder: ((context, child) {
+          return Theme(
+            data: Theme.of(context).copyWith(
+              colorScheme: ColorScheme.light(
+                primary: primaryColor,
+                onPrimary: Colors.white,
+                onSurface: Colors.blue,
+              ),
+              textButtonTheme: TextButtonThemeData(
+                style: TextButton.styleFrom(
+                  primary: Color.fromARGB(255, 42, 59, 158),
+                ),
+              ),
+            ),
+            child: child!,
+          );
+        }));
+
+    if (picked != null) {
+      setState(() {
+        date = picked;
+        selectdt = formatDate(date, [
+          yyyy,
+          "-",
+          mm,
+          "-",
+          dd,
+        ]);
+      });
+      
+    }
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,7 +96,7 @@ class _homeState extends State<home> {
               children: [
                 InkWell(
                   onTap: () {
-                    Get.to(notification());
+                    Get.to(const home2());
                   },
                   child: Container(
                       height: 16,
@@ -66,7 +120,11 @@ class _homeState extends State<home> {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            datepickerwidget(),
+            InkWell(
+              onTap: (){
+                _showDatePicker(context);
+              },
+              child: datepickerwidget()),
             SizedBox(
               height: 20,
             ),
@@ -113,27 +171,32 @@ class _homeState extends State<home> {
                                height: 1.5,
                                color: Colors.black),
                               ),
-                          Container(
-                            height: 18,
-                            width: 58,
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(5)),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children:const [
-                               Text(
-                                'Explore',
-                                style: TextStyle(
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.blueGrey),
-                              ),
-                              Icon(
-                                Icons.arrow_right_alt,
-                                size: 17,
-                              )
-                            ]),
+                          InkWell(
+                            onTap: (){
+                                  Get.to(const SuggestionScreen());
+                            },
+                            child: Container(
+                              height: 18,
+                              width: 58,
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(5)),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children:const [
+                                 Text(
+                                  'Explore',
+                                  style: TextStyle(
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.blueGrey),
+                                ),
+                                Icon(
+                                  Icons.arrow_right_alt,
+                                  size: 17,
+                                )
+                              ]),
+                            ),
                           )
                         ],
                       ),
@@ -142,27 +205,31 @@ class _homeState extends State<home> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            Post_container(),
-            SizedBox(
+            const Post_container(),
+            const SizedBox(
               height: 15,
             ),
-            Row(
+             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  'Sugession',
-                  style: TextStyle(
-                      color: Color(0xff023047),
-                      fontWeight: FontWeight.bold,
-                      fontSize: 19),
-                ),
-                Text(
-                  'See All',
-                  style: TextStyle(color: Colors.blue),
-                )
+                           Text("Suggestion",
+                                            style: primaryFont.copyWith(
+                                              fontSize: 15,
+                                              color: const Color(0xff023047),
+                                              fontWeight: FontWeight.w600)),
+                            InkWell(
+                              onTap: (){
+                                Get.to(const SuggestionScreen());
+                              },
+                              child: Text("See All",
+                                              style: primaryFont.copyWith(
+                                                fontSize: 10,
+                                                color: const Color(0xff219EBC),
+                                                fontWeight: FontWeight.w500)),
+                            ),
               ],
             ),
             SizedBox(
