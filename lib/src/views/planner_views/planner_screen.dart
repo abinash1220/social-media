@@ -11,6 +11,7 @@ import 'package:social_media_marketing/src/views/home_views/search_posts_screen.
 import 'package:social_media_marketing/src/views/planner_views/calendar.dart';
 import 'package:social_media_marketing/src/views/planner_views/draft_screen.dart';
 import 'package:social_media_marketing/src/views/planner_views/schedule_screen.dart';
+import 'package:table_calendar/table_calendar.dart';
 
 class PlannerScreen extends StatefulWidget {
   const PlannerScreen({super.key});
@@ -231,7 +232,12 @@ class _PlannerScreenState extends State<PlannerScreen> {
                 ),
                 const SizedBox(height: 30,),
                 if(plannerController.index.value == 0)
-                Image(image: AssetImage("assets/images/Group 1788.png")),
+               // Image(image: AssetImage("assets/images/Group 1788.png")),
+                TableCalendar(
+                firstDay: DateTime.utc(2010, 10, 16),
+                lastDay: DateTime.utc(2030, 3, 14),
+                focusedDay: DateTime.now(),
+),
                 Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: InkWell(
