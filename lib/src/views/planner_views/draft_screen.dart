@@ -121,9 +121,9 @@ class _DraftScreenState extends State<DraftScreen> {
                               ],
                               borderRadius: BorderRadius.circular(6)),
                             child: Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: const EdgeInsets.all(0.0),
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Row(
@@ -132,7 +132,7 @@ class _DraftScreenState extends State<DraftScreen> {
                                     Image.asset(
                                     'assets/images/413.png',
                                     ),
-                                    const SizedBox(width: 10,),
+                                    const SizedBox(width: 0,),
                                     Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -184,9 +184,18 @@ class _DraftScreenState extends State<DraftScreen> {
                                     ),
                                   ],
                                 ),
+                                // Row(
+                                //   children:const [
+                                //     Icon(Icons.more_vert)
+                                //   ],
+                                // ),
                                 Row(
-                                  children:const [
-                                    Icon(Icons.more_vert)
+                                  children: [
+                                    PopupMenuButton(
+                                      itemBuilder: (BuildContext context) => [
+                                      PopupMenuItem(child: Text("Edit")),
+                                      PopupMenuItem(child: Text("Delete")),
+                                    ]),
                                   ],
                                 ),
                               ],

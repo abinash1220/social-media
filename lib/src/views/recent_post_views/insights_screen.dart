@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:social_media_marketing/src/constant/app_colors.dart';
 import 'package:social_media_marketing/src/constant/app_fonts.dart';
 import 'package:social_media_marketing/src/controllers/bottum_controller.dart';
+import 'package:social_media_marketing/src/controllers/planners_controller.dart';
 import 'package:social_media_marketing/src/views/home_views/create_post.dart';
 import 'package:social_media_marketing/src/views/widgets/bottumnav-bar.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -17,6 +18,8 @@ class InSightsScreen extends StatefulWidget {
 
 class _InSightsScreenState extends State<InSightsScreen> {
   final Controller = Get.put(bottombarcontroller());
+
+  final plannerController = Get.find<PlannersController>();
 
   List<_SalesData> data = [
     _SalesData('Mon'.tr, 5000),
@@ -61,15 +64,218 @@ class _InSightsScreenState extends State<InSightsScreen> {
               color:  Colors.white)),
               InkWell(
                 onTap: (){
-                  // showModalBottomSheet(context: context, builder: (BuildContext context) {
-                  //   return Container(
-                  //     height: 350,
-                  //     decoration: BoxDecoration(
-                  //        color: Colors.white,
-                  //       borderRadius: BorderRadius.only(topLeft: Radius.circular(14),topRight: Radius.circular(14))
-                  //     ),
-                  //   );
-                  // });
+                  showModalBottomSheet(
+                    shape:const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.only(topLeft: Radius.circular(14),topRight: Radius.circular(14)),
+                    ),
+                    context: context, 
+                    builder: (BuildContext context) {
+                    return Container(
+                      height: 350,
+                      decoration:const BoxDecoration(
+                         color: Colors.white,
+                        borderRadius: BorderRadius.only(topLeft: Radius.circular(14),topRight: Radius.circular(14))
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 15,right: 15,top: 20,bottom: 15),
+                        child: Obx(
+                            () => Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    children:const [
+                                      Image(
+                                        height: 28,
+                                        width: 28,
+                                        fit: BoxFit.cover,
+                                        image: AssetImage("assets/icons/facebook.png")),
+                                        SizedBox(width: 15,),
+                                        Image(
+                                        height: 28,
+                                        width: 28,
+                                        fit: BoxFit.cover,
+                                        image: AssetImage("assets/icons/insta.png")),
+                                        SizedBox(width: 15,),
+                                        Image(
+                                        height: 28,
+                                        width: 28,
+                                        fit: BoxFit.cover,
+                                        image: AssetImage("assets/icons/twitter.png")),
+                                    ],
+                                  ),
+                                  Row(
+                                    children:const [
+                                      Icon(Icons.cancel_outlined)
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              const Padding(
+                                padding:  EdgeInsets.only(top: 15),
+                                child: Divider(thickness: 1,),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 10,right: 10,top: 7,bottom: 7),
+                                child: InkWell(
+                                  onTap: (){
+                                    plannerController.filterSelect(0);
+                                    plannerController.update();
+                                  },
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                       Text("Today Post",
+                                        style: primaryFont.copyWith(
+                                        fontSize: 19,
+                                        color: const Color(0xff023047),
+                                        )),
+                                        Container(
+                                          height: 21,
+                                          width: 21,
+                                          decoration: BoxDecoration(
+                                            color:plannerController.filterSelect == 0 ? primaryColor : const Color(0xffE4E4E4),
+                                            borderRadius: BorderRadius.circular(12),
+                                          ),
+                                          child:const Center(
+                                            child: Icon(Icons.check,size: 13,color: Colors.white,),
+                                          ),
+                                        ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              const Divider(thickness: 1,),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 10,right: 10,top: 7,bottom: 7),
+                                child: InkWell(
+                                  onTap: (){
+                                    plannerController.filterSelect(1);
+                                    plannerController.update();
+                                  },
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                       Text("Weekly Analysis",
+                                        style: primaryFont.copyWith(
+                                        fontSize: 19,
+                                        color: const Color(0xff023047),
+                                        )),
+                                        Container(
+                                          height: 21,
+                                          width: 21,
+                                          decoration: BoxDecoration(
+                                            color:plannerController.filterSelect == 1 ? primaryColor :const Color(0xffE4E4E4),
+                                            borderRadius: BorderRadius.circular(12),
+                                          ),
+                                          child:const Center(
+                                            child: Icon(Icons.check,size: 13,color: Colors.white,),
+                                          ),
+                                        ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              const Divider(thickness: 1,),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 10,right: 10,top: 7,bottom: 7),
+                                child: InkWell(
+                                  onTap: (){
+                                    plannerController.filterSelect(2);
+                                    plannerController.update();
+                                  },
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                       Text("Monthly Analysis",
+                                        style: primaryFont.copyWith(
+                                        fontSize: 19,
+                                        color: const Color(0xff023047),
+                                        )),
+                                        Container(
+                                          height: 21,
+                                          width: 21,
+                                          decoration: BoxDecoration(
+                                            color:plannerController.filterSelect == 2 ? primaryColor :const Color(0xffE4E4E4),
+                                            borderRadius: BorderRadius.circular(12),
+                                          ),
+                                          child:const Center(
+                                            child: Icon(Icons.check,size: 13,color: Colors.white,),
+                                          ),
+                                        ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              const Divider(thickness: 1,),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 10,right: 10,top: 7,bottom: 7),
+                                child: InkWell(
+                                  onTap: (){
+                                    plannerController.filterSelect(3);
+                                    plannerController.update();
+                                  },
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                       Text("3 Month Analysis",
+                                        style: primaryFont.copyWith(
+                                        fontSize: 19,
+                                        color: const Color(0xff023047),
+                                        )),
+                                        Container(
+                                          height: 21,
+                                          width: 21,
+                                          decoration: BoxDecoration(
+                                            color:plannerController.filterSelect == 3 ? primaryColor :const Color(0xffE4E4E4),
+                                            borderRadius: BorderRadius.circular(12),
+                                          ),
+                                          child:const Center(
+                                            child: Icon(Icons.check,size: 13,color: Colors.white,),
+                                          ),
+                                        ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              const Divider(thickness: 1,),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 10,right: 10,top: 7,bottom: 7),
+                                child: InkWell(
+                                  onTap: (){
+                                    plannerController.filterSelect(4);
+                                    plannerController.update();
+                                  },
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                       Text("6 Month Analysis",
+                                        style: primaryFont.copyWith(
+                                        fontSize: 19,
+                                        color: const Color(0xff023047),
+                                        )),
+                                        Container(
+                                          height: 21,
+                                          width: 21,
+                                          decoration: BoxDecoration(
+                                            color:plannerController.filterSelect == 4 ? primaryColor :const Color(0xffE4E4E4),
+                                            borderRadius: BorderRadius.circular(12),
+                                          ),
+                                          child:const Center(
+                                            child: Icon(Icons.check,size: 13,color: Colors.white,),
+                                          ),
+                                        ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    );
+                  });
                 },
                 child: Image.asset('assets/icons/insightsimage.png')),
             ],
@@ -80,331 +286,276 @@ class _InSightsScreenState extends State<InSightsScreen> {
       
       body: ListView(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
-          Row(
-            children: [
-              Text(
-                '   Post',
-                style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xff023047)),
-              )
-            ],
-          ),
-          SizedBox(
-            height: 15,
-          ),
+         Padding(
+           padding: const EdgeInsets.only(left: 15,bottom: 10),
+           child: Text("Post",
+                style: primaryFont.copyWith(
+                fontSize: 18,
+                color: const Color(0xff023047),
+                fontWeight: FontWeight.w600
+              )),
+         ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(left: 15,right: 15),
             child: Container(
-              height: 200,
+              height: 175,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color: Color(0xffA35ED8),
+                color:const Color(0xffA35ED8),
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Column(
+                  Padding(
+                    padding: const EdgeInsets.only(left: 12,right: 12),
+                    child: Row(
+                      children: [
+                        const Image(image: AssetImage("assets/icons/insightsimage2.png")),
+                        const SizedBox(width: 15,),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("New Brand Post",
+                               style: primaryFont.copyWith(
+                               fontSize: 15,
+                               color: const Color(0xffF9FAFC),
+                               fontWeight: FontWeight.w600
+                              )),
+                              Text("Lorem ipsum dolor sit amet, consectetur\nadipiscing elit, sed do eiusmod tempor incididunt\nut labore et dolore magna aliqua.",
+                               style: primaryFont.copyWith(
+                               fontSize: 9,
+                               color: const Color(0xffF9FAFC),
+                               height: 1.5,
+                               fontWeight: FontWeight.w500,
+                              )),
+                               Text("#new #trending #design",
+                               style: primaryFont.copyWith(
+                               fontSize: 9,
+                               color: const Color(0xffF9FAFC),
+                               fontWeight: FontWeight.w500
+                              )),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Row(
-                        children: [
-                          Padding(
-                            padding:
-                                const EdgeInsets.only(bottom: 20, right: 20),
-                            child: Image.asset(
-                              'assets/icons/insightsimage2.png',
-                            ),
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              SizedBox(
-                                height: 30,
-                              ),
-                              Row(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 15),
-                                    child: Text(
-                                      'New Brand Post',
-                                      style: TextStyle(
-                                          fontSize: 15, color: Colors.white),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: 7,
-                              ),
-                              Row(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 15),
-                                    child: Text(
-                                      'Lorem ipsum dolor sit amet,',
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 12),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 15),
-                                child: Text(
-                                  'consectetur adipiscing elit,sed',
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 12),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 15),
-                                child: Text(
-                                  'do eiusmod tempor incididunt ut',
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 12),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 15),
-                                child: Text(
-                                  'labore et dolore magna aliqua',
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 12),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 15),
-                                child: Text(
-                                  '#new #trending #design',
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 12),
-                                ),
-                              ),
-                              SizedBox(
-                                height: 20,
-                              ),
-                            ],
-                          )
-                        ],
+                      Container(
+                        height: 45,
+                        width: 100,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(8)),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Text("Post Reach",
+                            style: primaryFont.copyWith(
+                            fontSize: 11,
+                            color: primaryColor,
+                            fontWeight: FontWeight.w500
+                            )),
+                            Text("45",
+                               style: primaryFont.copyWith(
+                               fontSize: 18,
+                               color: const Color(0xff023047),
+                               fontWeight: FontWeight.w600
+                            )),
+                          ],
+                        ),
                       ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 7),
-                                child: Container(
-                                  height: 45,
-                                  width: 105,
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(15)),
-                                  child: Column(
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 10, top: 5),
-                                            child: Text(
-                                              'Post Reach',
-                                              style: TextStyle(fontSize: 13),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: 3,
-                                      ),
-                                      Text(
-                                        '45',
-                                        style: TextStyle(
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                width: 7,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(right: 12),
-                                child: Container(
-                                  height: 45,
-                                  width: 110,
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(10)),
-                                  child: Column(
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 8, top: 5),
-                                            child: Text(
-                                              'Post Impression',
-                                              style: TextStyle(
-                                                fontSize: 13,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: 3,
-                                      ),
-                                      Text(
-                                        '55',
-                                        style: TextStyle(
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.bold),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(right: 5),
-                                child: Container(
-                                  height: 45,
-                                  width: 113,
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(10)),
-                                  child: Column(
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.only(
-                                                top: 5, left: 5),
-                                            child: Text(
-                                              'Post Engagement',
-                                              style: TextStyle(fontSize: 13),
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: 3,
-                                      ),
-                                      Text(
-                                        '67',
-                                        style: TextStyle(
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.bold),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        ],
+                      Container(
+                        height: 45,
+                        width: 100,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(8)),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Text("Post Impression",
+                            style: primaryFont.copyWith(
+                            fontSize: 11,
+                            color: primaryColor,
+                            fontWeight: FontWeight.w500
+                            )),
+                            Text("67",
+                               style: primaryFont.copyWith(
+                               fontSize: 18,
+                               color: const Color(0xff023047),
+                               fontWeight: FontWeight.w600
+                            )),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        height: 45,
+                        width: 100,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(8)),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Text("Post Engagement",
+                            style: primaryFont.copyWith(
+                            fontSize: 11,
+                            color: primaryColor,
+                            fontWeight: FontWeight.w500
+                            )),
+                            Text("67",
+                               style: primaryFont.copyWith(
+                               fontSize: 18,
+                               color: const Color(0xff023047),
+                               fontWeight: FontWeight.w600
+                            )),
+                          ],
+                        ),
                       )
                     ],
-                  ),
+                  )
                 ],
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 13,
           ),
           Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 12),
-                child: Text(
-                  'Interactions',
-                  style: TextStyle(
+                padding: const EdgeInsets.only(left: 15),
+                child: Text("Interactions",
+                      style: primaryFont.copyWith(
                       fontSize: 18,
-                      color: Color(0xff023047),
-                      fontWeight: FontWeight.bold),
-                ),
-              )
+                      color: const Color(0xff023047),
+                      fontWeight: FontWeight.w600
+                     )),
+              ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Image.asset('assets/icons/intractionimage.png'),
-              Image.asset('assets/icons/intractionimage2.png'),
-              Image.asset('assets/icons/intractionimage3.png'),
-              Image.asset('assets/icons/intractionimage4.png'),
-              Image.asset('assets/icons/intractionimage5.png')
+              Container(
+                height: 44,
+                width: 44,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(25)
+                ),
+                child: Center(
+                  child: Image.asset('assets/icons/intractionimage.png'))),
+              Container(
+                height: 44,
+                width: 44,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(25)
+                ),
+                child: Center(
+                  child: Image.asset('assets/icons/intractionimage2.png'))),
+              Container(
+                height: 44,
+                width: 44,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(25)
+                ),
+                child: Center(
+                  child: Image.asset('assets/icons/intractionimage3.png'))),
+              Container(
+                height: 44,
+                width: 44,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(25)
+                ),
+                child: Center(
+                  child: Image.asset('assets/icons/intractionimage4.png'))),
+              Container(
+                height: 44,
+                width: 44,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(25)
+                ),
+                child: Center(
+                  child: Image.asset('assets/icons/intractionimage5.png')))
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Text('21'),
-              Text('21'),
-              Text('21'),
-              Text('21'),
-              Text('21')
+              Text("21",
+                    style: primaryFont.copyWith(
+                    fontSize: 18,
+                    color: const Color(0xff023047),
+                   )),
+               Text("21",
+                    style: primaryFont.copyWith(
+                    fontSize: 18,
+                    color: const Color(0xff023047),
+                   )),
+               Text("21",
+                    style: primaryFont.copyWith(
+                    fontSize: 18,
+                    color: const Color(0xff023047),
+                   )),
+               Text("21",
+                    style: primaryFont.copyWith(
+                    fontSize: 18,
+                    color: const Color(0xff023047),
+                   )),
+               Text("21",
+                    style: primaryFont.copyWith(
+                    fontSize: 18,
+                    color: const Color(0xff023047),
+                   )),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 25,
           ),
+           Padding(
+             padding: const EdgeInsets.only(left: 15,bottom: 5),
+             child: Text("Social Media Post Reached",
+                                          style: primaryFont.copyWith(
+                                          fontSize: 18,
+                                          color: const Color(0xff023047),
+                                          fontWeight: FontWeight.w600
+                                          )),
+           ),
           Padding(
             padding: const EdgeInsets.only(left: 15, right: 15),
             child: Container(
-              height: 185,
+              height: 151,
               width: size.width,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(5),
                   gradient: const LinearGradient(
                       begin: Alignment.bottomLeft,
                       end: Alignment.topRight,
                       colors: [
-                        Color.fromARGB(255, 248, 181, 167),
-                        Color.fromARGB(255, 248, 143, 136),
+                        Color(0xffFFECF3),
+                        Color(0xffFFECF3),
                       ])
                       ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Padding(
-                    padding:
-                        const EdgeInsets.only(top: 10, left: 10, right: 20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Total Sale".tr,
-                          style: primaryFont.copyWith(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15),
-                        ),
-                        Text(
-                          "\$12,000",
-                          style: primaryFont.copyWith(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15),
-                        ),
-                      ],
-                    ),
-                  ),
                   Padding(
                     padding: const EdgeInsets.only(right: 10),
                     child: Container(
@@ -419,7 +570,7 @@ class _InSightsScreenState extends State<InSightsScreen> {
                         ),
                         series: <ChartSeries<_SalesData, String>>[
                           StackedLineSeries<_SalesData, String>(
-                              color: Colors.white,
+                              color: Colors.black,
                               dataSource: data,
                               xValueMapper: (_SalesData sales, _) => sales.year,
                               yValueMapper: (_SalesData sales, _) =>
@@ -431,9 +582,9 @@ class _InSightsScreenState extends State<InSightsScreen> {
                           //dataLabelSettings: DataLabelSettings(isVisible: true,color: Colors.amber))
                         ],
                         primaryXAxis: CategoryAxis(
-                            labelStyle: const TextStyle(color: Colors.white)),
+                            labelStyle: const TextStyle(color: Colors.black)),
                         primaryYAxis: CategoryAxis(
-                          labelStyle: const TextStyle(color: Colors.white),
+                          labelStyle: const TextStyle(color: Colors.black),
                           minimum: 0,
                           maximum: 10000,
                           desiredIntervals: 5,
