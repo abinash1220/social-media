@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:social_media_marketing/src/constant/app_colors.dart';
 import 'package:social_media_marketing/src/constant/app_fonts.dart';
+import 'package:social_media_marketing/src/controllers/posts_controller.dart';
 import 'package:social_media_marketing/src/views/recent_post_views/insights_screen.dart';
 
 class ScheduleScreen extends StatefulWidget {
@@ -14,292 +15,129 @@ class ScheduleScreen extends StatefulWidget {
 }
 
 class _ScheduleScreenState extends State<ScheduleScreen> {
+
+
+  final postsController = Get.find<PostsController>(); 
+ 
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Padding(
-      padding: const EdgeInsets.only(left: 20,right: 20),
-      child: Column(
-        children: [
-                  Container(
-                          width: size.width,
-                          height: 119,
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              boxShadow:const [
-                                   BoxShadow(
-                                offset: Offset(0, 1),
-                                blurRadius: 3.20,
-                                spreadRadius: 0.50,
-                                color: Color.fromARGB(255, 201, 200, 200),
-                              )
-                              ],
-                              borderRadius: BorderRadius.circular(6)),
-                            child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Image.asset(
-                                    'assets/images/NoPath - Copy (2).png',
+      padding: const EdgeInsets.only(left: 20,right: 20,),
+      child:GetBuilder<PostsController>(
+        builder: (_) {
+          return ListView.builder(
+                               shrinkWrap: true,
+                               itemCount: postsController.getPostsData.length,
+                               itemBuilder: (context, index){
+                                return Padding(
+                                  padding: const EdgeInsets.only(bottom: 15),
+                                  child: Container(
+                                    width: size.width,
+                                    height: 119,
+                                    decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        boxShadow:const [
+                                             BoxShadow(
+                                          offset: Offset(0, 1),
+                                          blurRadius: 3.20,
+                                          spreadRadius: 0.50,
+                                          color: Color.fromARGB(255, 201, 200, 200),
+                                        )
+                                        ],
+                                        borderRadius: BorderRadius.circular(6)),
+                                      child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment: MainAxisAlignment.start,
+                                            children: [
+                                              ClipRRect(
+                                                borderRadius: BorderRadius.circular(3),
+                                                child: Image.network(
+                                                postsController.getPostsData[index].imagePath,
+                                                height: 100,
+                                                width: 100,
+                                                fit: BoxFit.cover,
+                                                ),
+                                              ),
+                                              const SizedBox(width: 10,),
+                                              Column(
+                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                children: [
+                                                  Text(postsController.getPostsData[index].title,
+                                                    style: primaryFont.copyWith(fontSize: 14,
+                                                    color: Colors.black,
+                                                    fontWeight: FontWeight.w600
+                                                    ),
+                                                  ),
+                                                  Text(postsController.getPostsData[index].content,
+                                                    style: primaryFont.copyWith(fontSize: 9,
+                                                    color: Colors.black,
+                                                    fontWeight: FontWeight.w400,
+                                                    height: 1.5
+                                                    ),
+                                                  ),
+                                                   Text("#new #trending #design",
+                                                    style: primaryFont.copyWith(fontSize: 9,
+                                                    color: Colors.blue,
+                                                    fontWeight: FontWeight.w500
+                                                    ),
+                                                  ),
+                                                  Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.spaceBetween,
+                                                    children: [
+                                                      Image.asset(
+                                                        'assets/icons/twitter.png',
+                                                        height: 20,
+                                                      ),
+                                                     const SizedBox(
+                                                        width: 10,
+                                                      ),
+                                                      Image.asset(
+                                                        'assets/icons/pinterest.png',
+                                                        height: 20,
+                                                      ),
+                                                      const SizedBox(
+                                                        width: 10,
+                                                      ),
+                                                      Image.asset(
+                                                        'assets/icons/linkedin.png',
+                                                        height: 20,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                          Row(
+                                            children: [
+                                              InkWell(
+                                                onTap: (){
+                                                  _showlogPost(context);
+                                                },
+                                                child: Icon(Icons.more_vert))
+                                            ],
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                    const SizedBox(width: 10,),
-                                    Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                      children: [
-                                        Text("New Brand Post",
-                                          style: primaryFont.copyWith(fontSize: 14,
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.w600
-                                          ),
-                                        ),
-                                        Text("Lorem ipsum dolor sit amet, consectetur\nadipiscing elit, sed do eiusmod tempor\nincididunt ut labore et dolore magna aliqua.",
-                                          style: primaryFont.copyWith(fontSize: 9,
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.w400,
-                                          height: 1.5
-                                          ),
-                                        ),
-                                         Text("#new #trending #design",
-                                          style: primaryFont.copyWith(fontSize: 9,
-                                          color: Colors.blue,
-                                          fontWeight: FontWeight.w500
-                                          ),
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Image.asset(
-                                              'assets/icons/twitter.png',
-                                              height: 20,
-                                            ),
-                                           const SizedBox(
-                                              width: 10,
-                                            ),
-                                            Image.asset(
-                                              'assets/icons/pinterest.png',
-                                              height: 20,
-                                            ),
-                                            const SizedBox(
-                                              width: 10,
-                                            ),
-                                            Image.asset(
-                                              'assets/icons/linkedin.png',
-                                              height: 20,
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    InkWell(
-                                      onTap: (){
-                                        Get.to(const InSightsScreen());
-                                      },
-                                      child:const Icon(Icons.more_vert))
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 20,),
-                        Container(
-                          width: size.width,
-                          height: 119,
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              boxShadow:const [
-                                   BoxShadow(
-                                offset: Offset(0, 1),
-                                blurRadius: 3.20,
-                                spreadRadius: 0.50,
-                                color: Color.fromARGB(255, 201, 200, 200),
-                              )
-                              ],
-                              borderRadius: BorderRadius.circular(6)),
-                            child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Image.asset(
-                                    'assets/images/413.png',
-                                    ),
-                                    const SizedBox(width: 10,),
-                                    Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                      children: [
-                                        Text("New Brand Post",
-                                          style: primaryFont.copyWith(fontSize: 14,
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.w600
-                                          ),
-                                        ),
-                                        Text("Lorem ipsum dolor sit amet, consectetur\nadipiscing elit, sed do eiusmod tempor\nincididunt ut labore et dolore magna aliqua.",
-                                          style: primaryFont.copyWith(fontSize: 9,
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.w400,
-                                          height: 1.5
-                                          ),
-                                        ),
-                                         Text("#new #trending #design",
-                                          style: primaryFont.copyWith(fontSize: 9,
-                                          color: Colors.blue,
-                                          fontWeight: FontWeight.w500
-                                          ),
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Image.asset(
-                                              'assets/icons/twitter.png',
-                                              height: 20,
-                                            ),
-                                           const SizedBox(
-                                              width: 10,
-                                            ),
-                                            Image.asset(
-                                              'assets/icons/pinterest.png',
-                                              height: 20,
-                                            ),
-                                            const SizedBox(
-                                              width: 10,
-                                            ),
-                                            Image.asset(
-                                              'assets/icons/linkedin.png',
-                                              height: 20,
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    InkWell(
-                                      onTap: (){
-                                        _showlogPost(context);
-                                      },
-                                      child: Icon(Icons.more_vert))
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 20,),
-                        Container(
-                          width: size.width,
-                          height: 119,
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              boxShadow:const [
-                                   BoxShadow(
-                                offset: Offset(0, 1),
-                                blurRadius: 3.20,
-                                spreadRadius: 0.50,
-                                color: Color.fromARGB(255, 201, 200, 200),
-                              )
-                              ],
-                              borderRadius: BorderRadius.circular(6)),
-                            child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Image.asset(
-                                    'assets/images/65.png',
-                                    ),
-                                    const SizedBox(width: 10,),
-                                    Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                      children: [
-                                        Text("New Brand Post",
-                                          style: primaryFont.copyWith(fontSize: 14,
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.w600
-                                          ),
-                                        ),
-                                        Text("Lorem ipsum dolor sit amet, consectetur\nadipiscing elit, sed do eiusmod tempor\nincididunt ut labore et dolore magna aliqua.",
-                                          style: primaryFont.copyWith(fontSize: 9,
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.w400,
-                                          height: 1.5
-                                          ),
-                                        ),
-                                         Text("#new #trending #design",
-                                          style: primaryFont.copyWith(fontSize: 9,
-                                          color: Colors.blue,
-                                          fontWeight: FontWeight.w500
-                                          ),
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Image.asset(
-                                              'assets/icons/twitter.png',
-                                              height: 20,
-                                            ),
-                                           const SizedBox(
-                                              width: 10,
-                                            ),
-                                            Image.asset(
-                                              'assets/icons/pinterest.png',
-                                              height: 20,
-                                            ),
-                                            const SizedBox(
-                                              width: 10,
-                                            ),
-                                            Image.asset(
-                                              'assets/icons/linkedin.png',
-                                              height: 20,
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    InkWell(
-                                      onTap: (){
-                                        _showlog(context);
-                                      },
-                                      child: Icon(Icons.more_vert))
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-        ],
-      ),
-    );
+                                  ),
+                                );
+                              }
+                            );
+        }
+      ));
   }
+
+
   Future<void> _showlog(BuildContext context) {
     return showDialog(
         context: context,

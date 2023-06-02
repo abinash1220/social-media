@@ -14,4 +14,6 @@ abstract class BaseApiService {
   String getUserDataURL = "/api/auth/profile";
 
   String createPostURL = "/api/auth/create_post";
+
+  String getPostURL = "/api/auth/getposts";
 }

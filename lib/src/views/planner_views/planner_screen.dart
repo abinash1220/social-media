@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:social_media_marketing/src/constant/app_colors.dart';
 import 'package:social_media_marketing/src/constant/app_fonts.dart';
 import 'package:social_media_marketing/src/controllers/planners_controller.dart';
+import 'package:social_media_marketing/src/controllers/posts_controller.dart';
 import 'package:social_media_marketing/src/views/home_views/search_posts_screen.dart';
 import 'package:social_media_marketing/src/views/planner_views/calendar.dart';
 import 'package:social_media_marketing/src/views/planner_views/draft_screen.dart';
@@ -22,6 +23,8 @@ class PlannerScreen extends StatefulWidget {
 class _PlannerScreenState extends State<PlannerScreen> {
 
   final plannerController = Get.find<PlannersController>();
+
+  final postsController = Get.find<PostsController>();
 
   DateTime date = DateTime.now();
 
@@ -157,6 +160,7 @@ class _PlannerScreenState extends State<PlannerScreen> {
                           onTap: (){
                             plannerController.index(1);
                             plannerController.update();
+                            postsController.getScheduledPost(status: "scheduled");
                           },
                           child: Container(
                             height: 26,
@@ -193,6 +197,7 @@ class _PlannerScreenState extends State<PlannerScreen> {
                           onTap: (){
                             plannerController.index(2);
                             plannerController.update();
+                            postsController.getDraftPost(status: "draft");
                           },
                           child: Container(
                             height: 26,
