@@ -11,5 +11,7 @@ abstract class BaseApiService {
 
   String changePasswordURL = "/api/auth/change_password_new";
 
-  String getUserDataURL = "";
+  String getUserDataURL = "/api/auth/profile";
+
+  String createPostURL = "/api/auth/create_post";
 }

@@ -2,7 +2,6 @@ import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter_clean_calendar/flutter_clean_calendar.dart';
 import 'package:get/get.dart';
 import 'package:social_media_marketing/src/constant/app_colors.dart';
 import 'package:social_media_marketing/src/constant/app_fonts.dart';

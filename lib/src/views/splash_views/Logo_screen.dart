@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:social_media_marketing/src/constant/app_colors.dart';
+import 'package:social_media_marketing/src/constant/app_constants.dart';
 import 'package:social_media_marketing/src/constant/app_fonts.dart';
+import 'package:social_media_marketing/src/controllers/auth_controller.dart';
 import 'package:social_media_marketing/src/views/login_views/login_screen.dart';
+import 'package:social_media_marketing/src/views/register_views/otp_screen.dart';
+import 'package:social_media_marketing/src/views/widgets/bottumnav-bar.dart';
 
 class LogoScreen extends StatefulWidget {
   const LogoScreen({super.key});
@@ -13,44 +17,78 @@ class LogoScreen extends StatefulWidget {
 }
 
 class _LogoScreenState extends State<LogoScreen> {
+  final authController = Get.find<AuthController>();
 
   @override
   void initState() {
-    
     super.initState();
-    redirectToNext();
+    checkForAuth();
   }
 
   redirectToNext() async {
-    await Future.delayed(Duration(seconds: 2));
-    Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+    await Future.delayed(const Duration(seconds: 2));
+    Get.offAll(() => LoginScreen());
+  }
+
+  redirectToHome() async {
+    await Future.delayed(const Duration(seconds: 2));
+    Get.offAll(() => HomeBottomNavgationBar());
+  }
+
+  redirectToOtpScreen() async {
+    final prefs = await SharedPreferences.getInstance();
+    String? tmobileNumber = prefs.getString(kMobileNumber);
+    authController.getOTP(mobileNumber: tmobileNumber.toString());
+    await Future.delayed(const Duration(seconds: 2));
+    Get.offAll(() => OtpScreen(
+          mobileNumber: tmobileNumber.toString(),
+        ));
+  }
+
+  checkForAuth() async {
+    final prefs = await SharedPreferences.getInstance();
+    String? authtoken = prefs.getString(authToken);
+    bool? verify = prefs.getBool(kIsVerifyed);
+    print("Token is here");
+    print(authtoken);
+    if (authtoken == "null" || authtoken == null) {
+      redirectToNext();
+    } else {
+      print("---------inside login---------");
+      if (verify == true) {
+        redirectToHome();
+      } else {
+        print("---------verify false---------");
+        redirectToOtpScreen();
+      }
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              primaryColor,
-              secondaryColor
-            ]
-            ),
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [primaryColor, secondaryColor]),
         ),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Image(image: AssetImage("assets/images/img.png")),
-              const SizedBox(height: 20,),
-              Text("Social Media Manage",style: primaryFont.copyWith(fontSize: 24,color: const Color(0xffF9FAFC)))
+              const SizedBox(
+                height: 20,
+              ),
+              Text("Social Media Manage",
+                  style: primaryFont.copyWith(
+                      fontSize: 24, color: const Color(0xffF9FAFC)))
             ],
           ),
-          ),
         ),
+      ),
     );
   }
 }
