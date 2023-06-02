@@ -24,6 +24,8 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
 
   final _formKey = GlobalKey<FormState>();
 
+  bool isCpasswordVisible = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -135,6 +137,7 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
                           }
                           return null;
                         },
+                        obscureText: isCpasswordVisible,
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         decoration: InputDecoration(
                             fillColor: Colors.white,
@@ -155,6 +158,15 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
                                 borderSide: BorderSide(
                               color: Colors.red,
                             )),
+                            suffixIcon: InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    isCpasswordVisible = !isCpasswordVisible;
+                                  });
+                                },
+                                child: isCpasswordVisible
+                                    ? Icon(Icons.visibility)
+                                    : Icon(Icons.visibility_off)),
                             hintText: "",
                             labelStyle: primaryFont.copyWith(
                                 color: const Color(0xff023047))),
@@ -180,39 +192,62 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
                     ],
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
-                  child: InkWell(
-                    onTap: () {
-                      if (_formKey.currentState!.validate()) {
-                        // _showlog(context);
-                        authController.loginUser(
-                            userName: emailMobileController.text,
-                            password: passwordController.text,
-                            context: context);
-                      }
-                    },
-                    child: Container(
-                      height: 41,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                          color: secondaryColor,
-                          borderRadius: BorderRadius.circular(20),
-                          boxShadow: const [
-                            BoxShadow(
-                              offset: Offset(0, 1),
-                              blurRadius: 3.20,
-                              spreadRadius: 0.50,
-                              color: Color.fromARGB(255, 247, 114, 158),
-                            )
-                          ]),
-                      child: Center(
-                          child: Text("Log in",
-                              style: primaryFont.copyWith(
-                                  fontSize: 18,
-                                  color: const Color(0xffF9FAFC),
-                                  fontWeight: FontWeight.w500))),
-                    ),
+                Obx(
+                  () => Padding(
+                    padding:
+                        const EdgeInsets.only(left: 20, right: 20, top: 30),
+                    child: authController.isLoading.isTrue
+                        ? Container(
+                            height: 41,
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                                color: secondaryColor,
+                                borderRadius: BorderRadius.circular(20),
+                                boxShadow: const [
+                                  BoxShadow(
+                                    offset: Offset(0, 1),
+                                    blurRadius: 3.20,
+                                    spreadRadius: 0.50,
+                                    color: Color.fromARGB(255, 247, 114, 158),
+                                  )
+                                ]),
+                            child: Center(
+                                child: CircularProgressIndicator(
+                              color: Colors.white,
+                            )),
+                          )
+                        : InkWell(
+                            onTap: () {
+                              if (_formKey.currentState!.validate()) {
+                                // _showlog(context);
+                                authController.loginUser(
+                                    userName: emailMobileController.text,
+                                    password: passwordController.text,
+                                    context: context);
+                              }
+                            },
+                            child: Container(
+                              height: 41,
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                  color: secondaryColor,
+                                  borderRadius: BorderRadius.circular(20),
+                                  boxShadow: const [
+                                    BoxShadow(
+                                      offset: Offset(0, 1),
+                                      blurRadius: 3.20,
+                                      spreadRadius: 0.50,
+                                      color: Color.fromARGB(255, 247, 114, 158),
+                                    )
+                                  ]),
+                              child: Center(
+                                  child: Text("Log in",
+                                      style: primaryFont.copyWith(
+                                          fontSize: 18,
+                                          color: const Color(0xffF9FAFC),
+                                          fontWeight: FontWeight.w500))),
+                            ),
+                          ),
                   ),
                 ),
                 Row(

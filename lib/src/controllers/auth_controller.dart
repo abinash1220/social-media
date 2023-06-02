@@ -9,6 +9,7 @@ import 'package:social_media_marketing/src/services/netwrok_apis/auth_api_servic
 import 'package:social_media_marketing/src/services/netwrok_apis/auth_api_services/login_api_services.dart';
 import 'package:social_media_marketing/src/services/netwrok_apis/auth_api_services/otp_verify_api_services.dart';
 import 'package:social_media_marketing/src/services/netwrok_apis/auth_api_services/register_api_services.dart';
+import 'package:social_media_marketing/src/views/login_views/login_screen.dart';
 import 'package:social_media_marketing/src/views/register_views/otp_screen.dart';
 import 'package:social_media_marketing/src/views/register_views/success_screen.dart';
 import 'package:social_media_marketing/src/views/splash_views/loader_screen.dart';
@@ -29,6 +30,7 @@ class AuthController extends GetxController {
 
   registerUser(RegisterModel registerModel) async {
     isLoading(true);
+    update();
     dio.Response<dynamic> response =
         await registerServicesApi.registerApi(registerModel);
     final SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -75,9 +77,10 @@ class AuthController extends GetxController {
       {required String userName,
       required String password,
       required BuildContext context}) async {
+    isLoading(true);
     dio.Response<dynamic> response =
         await loginApiServices.loginApi(password: password, userName: userName);
-
+    isLoading(false);
     if (response.statusCode == 200) {
       final SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.setString(authToken, response.data["token"]);
@@ -131,6 +134,15 @@ class AuthController extends GetxController {
       final SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.setBool(kIsVerifyed, true);
       Get.offAll(const SuccessScreen());
+    } else if (response.statusCode == 400) {
+      Get.rawSnackbar(
+          messageText: Text(
+            response.data["error"],
+            style: primaryFont.copyWith(
+              color: Colors.white,
+            ),
+          ),
+          backgroundColor: Colors.red);
     } else {
       Get.rawSnackbar(
           messageText: Text(
@@ -222,5 +234,12 @@ class AuthController extends GetxController {
             ),
           );
         });
+  }
+
+  logout() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString(authToken, "null");
+
+    Get.offAll(() => LoginScreen());
   }
 }

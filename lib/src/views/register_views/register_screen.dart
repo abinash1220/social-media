@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
@@ -25,6 +26,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
   var passwordController = TextEditingController();
   var confirmPasswordController = TextEditingController();
   var mobileNumberController = TextEditingController();
+
+  bool isPasswordVisible = false;
+  bool isCpasswordVisible = false;
 
   @override
   Widget build(BuildContext context) {
@@ -69,6 +73,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       height: 10,
                     ),
                     TextFormField(
+                      controller: nameController,
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Name Can't be Empty";
@@ -122,6 +127,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         }
                         return null;
                       },
+                      controller: mailController,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       decoration: InputDecoration(
                           fillColor: Colors.white,
@@ -173,6 +179,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         return null;
                       },
                       autovalidateMode: AutovalidateMode.onUserInteraction,
+                      obscureText: isPasswordVisible,
                       decoration: InputDecoration(
                           fillColor: Colors.white,
                           isDense: true,
@@ -192,6 +199,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               borderSide: BorderSide(
                             color: Colors.red,
                           )),
+                          suffixIcon: InkWell(
+                              onTap: () {
+                                setState(() {
+                                  isPasswordVisible = !isPasswordVisible;
+                                });
+                              },
+                              child: isPasswordVisible
+                                  ? Icon(Icons.visibility)
+                                  : Icon(Icons.visibility_off)),
                           hintText: "Enter Your Password",
                           labelStyle: primaryFont.copyWith(
                               color: const Color(0xff023047))),
@@ -223,6 +239,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         return null;
                       },
                       autovalidateMode: AutovalidateMode.onUserInteraction,
+                      obscureText: isCpasswordVisible,
                       decoration: InputDecoration(
                           fillColor: Colors.white,
                           isDense: true,
@@ -242,6 +259,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               borderSide: BorderSide(
                             color: Colors.red,
                           )),
+                          suffixIcon: InkWell(
+                              onTap: () {
+                                setState(() {
+                                  isCpasswordVisible = !isCpasswordVisible;
+                                });
+                              },
+                              child: isCpasswordVisible
+                                  ? Icon(Icons.visibility)
+                                  : Icon(Icons.visibility_off)),
                           hintText: "Confirm Your Password",
                           labelStyle: primaryFont.copyWith(
                               color: const Color(0xff023047))),
@@ -273,6 +299,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         return null;
                       },
                       autovalidateMode: AutovalidateMode.onUserInteraction,
+                      keyboardType: TextInputType.phone,
+                      inputFormatters: [
+                        LengthLimitingTextInputFormatter(10),
+                        FilteringTextInputFormatter.digitsOnly,
+                        FilteringTextInputFormatter.deny(RegExp(r'\s 1-9')),
+                      ],
                       decoration: InputDecoration(
                           fillColor: Colors.white,
                           isDense: true,
@@ -321,12 +353,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   color: Color.fromARGB(255, 247, 114, 158),
                                 )
                               ]),
-                          child: Center(
-                              child: Text("Sign up",
-                                  style: primaryFont.copyWith(
-                                      fontSize: 18,
-                                      color: const Color(0xffF9FAFC),
-                                      fontWeight: FontWeight.w500))),
+                          child: const Center(
+                              child: CircularProgressIndicator(
+                            color: Colors.white,
+                          )),
                         )
                       : InkWell(
                           onTap: () {

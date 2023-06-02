@@ -81,6 +81,15 @@ class _OtpScreenState extends State<OtpScreen> {
                   fontWeight: FontWeight.w500,
                   color: const Color(0xff023047),
                   height: 2)),
+          Obx(
+            () => Text(
+              "Otp is : ${authController.otpValue.value}",
+              style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 12,
+                  fontWeight: FontWeight.bold),
+            ),
+          ),
           const SizedBox(
             height: 15,
           ),
@@ -122,6 +131,9 @@ class _OtpScreenState extends State<OtpScreen> {
             },
             //runs when every textfield is filled
             onSubmit: (String verificationCode) {
+              setState(() {
+                otpValue = verificationCode;
+              });
               // showDialog(
               //     context: context,
               //     builder: (context) {

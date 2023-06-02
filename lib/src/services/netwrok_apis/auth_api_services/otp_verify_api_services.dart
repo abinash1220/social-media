@@ -25,7 +25,7 @@ class OtpVerifyApiServices extends BaseApiService {
           data: {
             "otp": otp,
           });
-      print("::::::::<Otp Verify URL>::::::::status code::::::::::");
+      print("::::::::<Otp Verify URL>::::::::status code:::::$otp:::::");
       print(response.statusCode);
       print(response.data);
       responseJson = response;

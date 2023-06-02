@@ -68,25 +68,9 @@ class _LogoScreenState extends State<LogoScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [primaryColor, secondaryColor]),
-        ),
+        decoration: BoxDecoration(color: Colors.white),
         child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Image(image: AssetImage("assets/images/img.png")),
-              const SizedBox(
-                height: 20,
-              ),
-              Text("Social Media Manage",
-                  style: primaryFont.copyWith(
-                      fontSize: 24, color: const Color(0xffF9FAFC)))
-            ],
-          ),
+          child: Image(image: AssetImage("assets/icons/1024 Logo.png")),
         ),
       ),
     );

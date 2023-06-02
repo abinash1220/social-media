@@ -7,7 +7,7 @@ class UploadPostApiServices extends BaseApiService {
   Future uploadPost({
     required String title,
     required String description,
-    required List<String> tags,
+    required String tags,
     required String status,
     required File media,
   }) async {
@@ -20,15 +20,14 @@ class UploadPostApiServices extends BaseApiService {
       FormData formData = FormData.fromMap({
         "title": title,
         "content": description,
-        "media": await MultipartFile.fromFile(media.path, filename: "image"),
+        "image": await MultipartFile.fromFile(media.path, filename: "image"),
         "tags": tags,
         "status": status
       });
 
-      var response = await dio.post(createPostURL,
+      var response = await dio.post(baseURL + createPostURL,
           options: Options(
               headers: {
-                'Accept': 'application/json',
                 'Authorization': 'Bearer $authtoken',
               },
               followRedirects: false,
