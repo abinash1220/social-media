@@ -16,7 +16,6 @@ import '../widgets/newbrant_container.dart';
 import '../widgets/viewbuttuon_socialmedia.dart';
 
 class home2 extends StatelessWidget {
-
   const home2({super.key});
 
   @override
@@ -48,7 +47,7 @@ class home2 extends StatelessWidget {
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(8),
                       ),
-                      child:const Center(
+                      child: const Center(
                           child: Icon(
                         Icons.search,
                         color: Colors.black,
@@ -62,11 +61,11 @@ class home2 extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: ListView(
-          physics:const BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           children: [
             Column(
               children: [
-                const datepickerwidget(),
+                datepickerwidget(),
                 const SizedBox(
                   height: 30,
                 ),
@@ -74,7 +73,7 @@ class home2 extends StatelessWidget {
                   width: double.infinity,
                   height: 119,
                   decoration: BoxDecoration(
-                      color:const Color(0xffE4E4E4),
+                      color: const Color(0xffE4E4E4),
                       borderRadius: BorderRadius.circular(6)),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -93,8 +92,8 @@ class home2 extends StatelessWidget {
                         children: [
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children:const [
-                               SizedBox(
+                            children: const [
+                              SizedBox(
                                 height: 5,
                               ),
                               Text(
@@ -136,7 +135,7 @@ class home2 extends StatelessWidget {
                           fontSize: 19),
                     ),
                     InkWell(
-                      onTap: (){
+                      onTap: () {
                         Get.to(RecentPostScreen());
                       },
                       child: Text(
@@ -151,7 +150,7 @@ class home2 extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(3.0),
-                 child: newbrandcontainer(),
+                  child: newbrandcontainer(),
                 ),
                 SizedBox(
                   height: 15,
@@ -177,7 +176,7 @@ class home2 extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(3.0),
-                  child:newbrandcontainer() ,
+                  child: newbrandcontainer(),
                 ),
                 SizedBox(
                   height: 20,

@@ -27,8 +27,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
   var confirmPasswordController = TextEditingController();
   var mobileNumberController = TextEditingController();
 
-  bool isPasswordVisible = false;
-  bool isCpasswordVisible = false;
+  bool isPasswordVisible = true;
+  bool isCpasswordVisible = true;
 
   @override
   Widget build(BuildContext context) {

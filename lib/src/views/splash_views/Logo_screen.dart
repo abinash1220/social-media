@@ -70,7 +70,10 @@ class _LogoScreenState extends State<LogoScreen> {
       body: Container(
         decoration: BoxDecoration(color: Colors.white),
         child: Center(
-          child: Image(image: AssetImage("assets/icons/1024 Logo.png")),
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Image(image: AssetImage("assets/icons/1024 Logo.png")),
+          ),
         ),
       ),
     );

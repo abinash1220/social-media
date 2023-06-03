@@ -15,7 +15,6 @@ class LoaderScreen extends StatefulWidget {
 }
 
 class _LoaderScreenState extends State<LoaderScreen> {
-
   @override
   void initState() {
     // TODO: implement initState
@@ -24,29 +23,36 @@ class _LoaderScreenState extends State<LoaderScreen> {
   }
 
   redirectToNext() async {
-    await Future.delayed(Duration(seconds: 2));
-    Navigator.push(context, MaterialPageRoute(builder: (context) => const ConnectFirstAccountScreen()));
+    await Future.delayed(const Duration(seconds: 2));
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => const ConnectFirstAccountScreen()));
   }
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       backgroundColor: backgroundColor,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Center(
             child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const SpinKitCircle(
-              color: Colors.black,
-               size: 100.0,
-                  ),
-              const SizedBox(height: 20,),
-              Text("Loading Screen....",style: primaryFont.copyWith(fontSize: 18,color: const Color(0xff023047)))
-            ],
-          ),
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SpinKitCircle(
+                  color: Colors.black,
+                  size: 100.0,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Text("Loading Screen....",
+                    style: primaryFont.copyWith(
+                        fontSize: 18, color: const Color(0xff023047)))
+              ],
+            ),
           )
         ],
       ),

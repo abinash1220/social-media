@@ -90,7 +90,7 @@ class AuthController extends GetxController {
     } else {
       Get.rawSnackbar(
           messageText: Text(
-            response.data["errors"].first,
+            response.data["message"],
             style: primaryFont.copyWith(
               color: Colors.white,
             ),

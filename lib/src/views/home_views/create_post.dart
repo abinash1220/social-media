@@ -435,7 +435,6 @@ class _CreateScreenState extends State<CreateScreen> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {
-          Get.to(EditScreen());
         },
         backgroundColor: const Color(0xffED075C),
       ),

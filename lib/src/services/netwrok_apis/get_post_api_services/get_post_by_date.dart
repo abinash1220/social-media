@@ -1,27 +1,30 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:social_media_marketing/src/constant/app_constants.dart';
 import 'package:social_media_marketing/src/services/base_url/base_urls.dart';
 
-class LoginApiServices extends BaseApiService {
-  Future loginApi({required String userName, required String password}) async {
+class GetPostByDateApiServices extends BaseApiService {
+  Future getPostByDate(String date) async {
     dynamic responseJson;
     try {
       var dio = Dio();
-
-      var response = await dio.post(baseURL + loginURL,
+      final prefs = await SharedPreferences.getInstance();
+      String? authtoken = prefs.getString(authToken);
+      var response = await dio.get(baseURL + getPostURL,
           options: Options(
               headers: {
-                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer $authtoken',
               },
               followRedirects: false,
               validateStatus: (status) {
                 return status! <= 500;
               }),
           data: {
-            "credential": userName,
-            "password": password,
+            "date": date,
           });
-      print("::::::::<login>::::::::status code::::::::::");
+      print("::::::::<Get Posts By date>::::::::status code::::::::::");
       print(response.statusCode);
       print(response.data);
       responseJson = response;

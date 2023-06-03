@@ -2,26 +2,24 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:social_media_marketing/src/services/base_url/base_urls.dart';
 
-class LoginApiServices extends BaseApiService {
-  Future loginApi({required String userName, required String password}) async {
+class GetUserApiServices extends BaseApiService {
+  Future getUser() async {
     dynamic responseJson;
     try {
       var dio = Dio();
 
-      var response = await dio.post(baseURL + loginURL,
-          options: Options(
-              headers: {
-                'Accept': 'application/json',
-              },
-              followRedirects: false,
-              validateStatus: (status) {
-                return status! <= 500;
-              }),
-          data: {
-            "credential": userName,
-            "password": password,
-          });
-      print("::::::::<login>::::::::status code::::::::::");
+      var response = await dio.get(
+        baseURL + getUserDataURL,
+        options: Options(
+            headers: {
+              'Accept': 'application/json',
+            },
+            followRedirects: false,
+            validateStatus: (status) {
+              return status! <= 500;
+            }),
+      );
+      print("::::::::<get user profile>::::::::status code::::::::::");
       print(response.statusCode);
       print(response.data);
       responseJson = response;

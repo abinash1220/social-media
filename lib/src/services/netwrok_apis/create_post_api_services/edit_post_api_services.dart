@@ -1,27 +1,44 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:social_media_marketing/src/services/base_url/base_urls.dart';
 
-class LoginApiServices extends BaseApiService {
-  Future loginApi({required String userName, required String password}) async {
+class EditPostApiServices extends BaseApiService {
+  Future editPost({
+    required int postId,
+    required String title,
+    required String description,
+    required String tags,
+    required String status,
+    required dynamic media,
+  }) async {
     dynamic responseJson;
     try {
       var dio = Dio();
+      final prefs = await SharedPreferences.getInstance();
+      String? authtoken = prefs.getString("auth_token");
 
-      var response = await dio.post(baseURL + loginURL,
+      FormData formData = FormData.fromMap({
+        "id": postId,
+        "title": title,
+        "content": description,
+        if (media != null)
+          "image": await MultipartFile.fromFile(media.path, filename: "image"),
+        "tags": tags,
+        "status": status
+      });
+
+      var response = await dio.post(baseURL + createPostURL,
           options: Options(
               headers: {
-                'Accept': 'application/json',
+                'Authorization': 'Bearer $authtoken',
               },
               followRedirects: false,
               validateStatus: (status) {
                 return status! <= 500;
               }),
-          data: {
-            "credential": userName,
-            "password": password,
-          });
-      print("::::::::<login>::::::::status code::::::::::");
+          data: formData);
+      print("::::::::<Upload post>::::::::status code::::::::::");
       print(response.statusCode);
       print(response.data);
       responseJson = response;
