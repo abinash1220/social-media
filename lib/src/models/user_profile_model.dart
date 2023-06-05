@@ -11,7 +11,7 @@ String userProfileModelToJson(UserProfileModel data) =>
     json.encode(data.toJson());
 
 class UserProfileModel {
-  User user;
+  UserData user;
 
   UserProfileModel({
     required this.user,
@@ -19,7 +19,7 @@ class UserProfileModel {
 
   factory UserProfileModel.fromJson(Map<String, dynamic> json) =>
       UserProfileModel(
-        user: User.fromJson(json["user"]),
+        user: UserData.fromJson(json["user"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -27,7 +27,7 @@ class UserProfileModel {
       };
 }
 
-class User {
+class UserData {
   int id;
   String roleId;
   String name;
@@ -48,7 +48,7 @@ class User {
   DateTime createdAt;
   DateTime updatedAt;
 
-  User({
+  UserData({
     required this.id,
     required this.roleId,
     required this.name,
@@ -70,7 +70,7 @@ class User {
     required this.updatedAt,
   });
 
-  factory User.fromJson(Map<String, dynamic> json) => User(
+  factory UserData.fromJson(Map<String, dynamic> json) => UserData(
         id: json["id"],
         roleId: json["role_id"],
         name: json["name"],

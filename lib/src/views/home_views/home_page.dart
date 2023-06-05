@@ -2,6 +2,7 @@ import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:social_media_marketing/src/controllers/posts_controller.dart';
+import 'package:social_media_marketing/src/controllers/profile_controller.dart';
 import 'package:social_media_marketing/src/views/home_views/home_page2.dart';
 import 'package:social_media_marketing/src/views/home_views/suggestions_screen.dart';
 import 'package:social_media_marketing/src/views/widgets/post_menu/post_menu_options.dart';
@@ -23,6 +24,8 @@ class _homeState extends State<home> {
   DateTime date = DateTime.now();
 
   final postController = Get.find<PostsController>();
+
+  final profileController = Get.find<ProfileController>();
 
   String selectdt =
       formatDate(DateTime(DateTime.now().year, DateTime.now().month, 01), [
@@ -71,6 +74,7 @@ class _homeState extends State<home> {
     super.initState();
     postController.getPostsByDate(
         date: formatDate(date, [yyyy, "-", mm, "-", dd]));
+        profileController.getUserProfile();
   }
 
   @override

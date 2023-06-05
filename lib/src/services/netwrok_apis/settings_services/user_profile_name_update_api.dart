@@ -3,25 +3,26 @@ import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:social_media_marketing/src/services/base_url/base_urls.dart';
 
-class GetUserApiServices extends BaseApiService {
-  Future getUser() async {
+class UserNameUpdateApiServices extends BaseApiService {
+  Future userNameUpdateApiServices({required String name}) async {
     dynamic responseJson;
     try {
       var dio = Dio();
       final prefs = await SharedPreferences.getInstance();
       String? authtoken = prefs.getString("auth_token");
-      var response = await dio.get(
-        baseURL + getUserDataURL,
-        options: Options(
-            headers: {
-              'Authorization': 'Bearer $authtoken',
-            },
-            followRedirects: false,
-            validateStatus: (status) {
-              return status! <= 500;
-            }),
-      );
-      print("::::::::<get user profile>::::::::status code::::::::::");
+      var response = await dio.post(baseURL + updateProfileNameURL,
+          options: Options(
+              headers: {
+                'Authorization': 'Bearer $authtoken',
+              },
+              followRedirects: false,
+              validateStatus: (status) {
+                return status! <= 500;
+              }),
+          data: {
+            "name": name,
+          });
+      print("::::::::<user name update api>::::::::status code::::::::::");
       print(response.statusCode);
       print(response.data);
       responseJson = response;

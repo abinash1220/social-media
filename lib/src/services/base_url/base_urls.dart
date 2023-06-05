@@ -23,4 +23,8 @@ abstract class BaseApiService {
   String connectWithfaceBook = "https://posteit.org/auth/facebook";
   String connectWithInstagram = "https://posteit.org/auth/instagram";
   //changes
+
+  String createSupport = "/api/auth/create_support";
+
+  String updateProfileNameURL = "/api/auth/profile_update";
 }

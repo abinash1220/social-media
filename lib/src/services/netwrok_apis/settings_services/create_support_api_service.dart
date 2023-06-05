@@ -3,25 +3,35 @@ import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:social_media_marketing/src/services/base_url/base_urls.dart';
 
-class GetUserApiServices extends BaseApiService {
-  Future getUser() async {
+class CreateSupportApiServices extends BaseApiService {
+  Future createSupportApiServices({
+    required String title,
+    required String content,
+    required dynamic image,
+  }) async {
     dynamic responseJson;
     try {
       var dio = Dio();
       final prefs = await SharedPreferences.getInstance();
       String? authtoken = prefs.getString("auth_token");
-      var response = await dio.get(
-        baseURL + getUserDataURL,
-        options: Options(
-            headers: {
-              'Authorization': 'Bearer $authtoken',
-            },
-            followRedirects: false,
-            validateStatus: (status) {
-              return status! <= 500;
-            }),
-      );
-      print("::::::::<get user profile>::::::::status code::::::::::");
+
+      FormData formData = FormData.fromMap({
+        "title": title,
+        "content": content,
+    if(image != null)    "image": await MultipartFile.fromFile(image, filename: "image"),
+      });
+
+      var response = await dio.post(baseURL + createSupport,
+          options: Options(
+              headers: {
+                'Authorization': 'Bearer $authtoken',
+              },
+              followRedirects: false,
+              validateStatus: (status) {
+                return status! <= 500;
+              }),
+          data: formData);
+      print("::::::::<create support>::::::::status code::::::::::");
       print(response.statusCode);
       print(response.data);
       responseJson = response;
