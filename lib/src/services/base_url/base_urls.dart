@@ -16,4 +16,10 @@ abstract class BaseApiService {
   String createPostURL = "/api/auth/create_post";
 
   String getPostURL = "/api/auth/getposts";
+
+  String getPostDetailsURL = "/api/auth/posts_details";
+  String deletePostURL = "/api/auth/delete_post";
+
+  String connectWithfaceBook = "https://posteit.org/auth/facebook";
+  String connectWithInstagram = "https://posteit.org/auth/instagram";
 }

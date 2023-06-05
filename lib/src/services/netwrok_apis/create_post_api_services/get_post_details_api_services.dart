@@ -1,24 +1,33 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:social_media_marketing/src/services/base_url/base_urls.dart';
 
-class GetUserApiServices extends BaseApiService {
-  Future getUser() async {
+class GetPostDetailsApiServices extends BaseApiService {
+  Future getpostDetails({
+    required int postId,
+  }) async {
     dynamic responseJson;
     try {
       var dio = Dio();
-      var response = await dio.get(
-        baseURL + getUserDataURL,
-        options: Options(
-            headers: {
-              'Accept': 'application/json',
-            },
-            followRedirects: false,
-            validateStatus: (status) {
-              return status! <= 500;
-            }),
-      );
-      print("::::::::<get user profile>::::::::status code::::::::::");
+      final prefs = await SharedPreferences.getInstance();
+      String? authtoken = prefs.getString("auth_token");
+
+      FormData formData = FormData.fromMap({
+        "id": postId,
+      });
+
+      var response = await dio.post(baseURL + getPostDetailsURL,
+          options: Options(
+              headers: {
+                'Authorization': 'Bearer $authtoken',
+              },
+              followRedirects: false,
+              validateStatus: (status) {
+                return status! <= 500;
+              }),
+          data: formData);
+      print("::::::::<get post details>::::::::status code::::::::::");
       print(response.statusCode);
       print(response.data);
       responseJson = response;
