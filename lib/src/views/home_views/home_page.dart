@@ -5,6 +5,7 @@ import 'package:social_media_marketing/src/controllers/posts_controller.dart';
 import 'package:social_media_marketing/src/controllers/profile_controller.dart';
 import 'package:social_media_marketing/src/views/home_views/home_page2.dart';
 import 'package:social_media_marketing/src/views/home_views/suggestions_screen.dart';
+import 'package:social_media_marketing/src/views/widgets/grid_view_suggessions.dart';
 import 'package:social_media_marketing/src/views/widgets/post_menu/post_menu_options.dart';
 
 import '../../constant/app_colors.dart';
@@ -72,6 +73,7 @@ class _homeState extends State<home> {
   @override
   void initState() {
     super.initState();
+    postController.getSuggessionPosts();
     postController.getPostsByDate(
         date: formatDate(date, [yyyy, "-", mm, "-", dd]));
         profileController.getUserProfile();
@@ -345,6 +347,7 @@ class _homeState extends State<home> {
                   InkWell(
                     onTap: () {
                       Get.to(const SuggestionScreen());
+                      Get.to(()=> Gridviewsugetion());
                     },
                     child: Text("See All",
                         style: primaryFont.copyWith(

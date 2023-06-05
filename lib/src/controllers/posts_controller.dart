@@ -6,8 +6,10 @@ import 'package:get/get.dart';
 import 'package:social_media_marketing/src/constant/app_fonts.dart';
 import 'package:social_media_marketing/src/controllers/auth_controller.dart';
 import 'package:social_media_marketing/src/models/posts_models/get_post_model.dart';
+import 'package:social_media_marketing/src/models/posts_models/post_suggesions_model.dart';
 import 'package:social_media_marketing/src/services/netwrok_apis/create_post_api_services/create_post_api_services.dart';
 import 'package:social_media_marketing/src/services/netwrok_apis/create_post_api_services/edit_post_api_services.dart';
+import 'package:social_media_marketing/src/services/netwrok_apis/create_post_api_services/get_suggessions_post.dart';
 import 'package:social_media_marketing/src/services/netwrok_apis/get_post_api_services/get_post_api_services.dart';
 import 'package:social_media_marketing/src/services/netwrok_apis/get_post_api_services/get_post_by_date.dart';
 import 'package:social_media_marketing/src/views/widgets/bottumnav-bar.dart';
@@ -18,6 +20,9 @@ class PostsController extends GetxController {
       GetPostByDateApiServices();
 
   EditPostApiServices editPostApiServices = EditPostApiServices();
+
+  GetSuggesionsApiServices getSuggesionsApiServices =
+      GetSuggesionsApiServices();
 
   DateTime selectedDate = DateTime.now();
   RxBool isLoading = false.obs;
@@ -216,5 +221,20 @@ class PostsController extends GetxController {
           backgroundColor: Colors.red);
     }
     update();
+  }
+
+  List<Postsuggestion> postSuggestionsList = [];
+
+  getSuggessionPosts() async {
+    dio.Response<dynamic> response =
+        await getSuggesionsApiServices.getSuggesions();
+
+    if (response.statusCode == 200) {
+      PostSuggesionsModel postSuggesionsModel =
+          PostSuggesionsModel.fromJson(response.data);
+
+      postSuggestionsList = postSuggesionsModel.postsuggestion;
+      update();
+    }
   }
 }

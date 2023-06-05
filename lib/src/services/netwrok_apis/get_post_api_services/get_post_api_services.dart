@@ -11,7 +11,7 @@ class GetPostApiServices extends BaseApiService {
       var dio = Dio();
       final prefs = await SharedPreferences.getInstance();
       String? authtoken = prefs.getString(authToken);
-      var response = await dio.get(baseURL + getPostURL,
+      var response = await dio.post(baseURL + getPostURL,
           options: Options(
               headers: {
                 'Content-Type': 'application/json',

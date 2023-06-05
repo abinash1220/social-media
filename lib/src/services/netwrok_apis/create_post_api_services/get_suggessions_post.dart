@@ -1,30 +1,29 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:social_media_marketing/src/constant/app_constants.dart';
 import 'package:social_media_marketing/src/services/base_url/base_urls.dart';
 
-class GetPostByDateApiServices extends BaseApiService {
-  Future getPostByDate(String date) async {
+class GetSuggesionsApiServices extends BaseApiService {
+  Future getSuggesions() async {
     dynamic responseJson;
     try {
       var dio = Dio();
       final prefs = await SharedPreferences.getInstance();
-      String? authtoken = prefs.getString(authToken);
-      var response = await dio.post(baseURL + getPostURL,
-          options: Options(
-              headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer $authtoken',
-              },
-              followRedirects: false,
-              validateStatus: (status) {
-                return status! <= 500;
-              }),
-          data: {
-            "date": date,
-          });
-      print("::::::::<Get Posts By date>::::::::status code::::::::::");
+      String? authtoken = prefs.getString("auth_token");
+
+      var response = await dio.post(
+        baseURL + postSuggessions,
+        options: Options(
+            headers: {
+              'Authorization': 'Bearer $authtoken',
+            },
+            followRedirects: false,
+            validateStatus: (status) {
+              return status! <= 500;
+            }),
+      );
+      print(
+          "::::::::<get suggessions post details>::::::::status code::::::::::");
       print(response.statusCode);
       print(response.data);
       responseJson = response;

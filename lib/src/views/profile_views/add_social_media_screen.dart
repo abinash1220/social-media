@@ -133,39 +133,46 @@ class _AddSocialMediaScreenState extends State<AddSocialMediaScreen> {
           ),
           Padding(
             padding: const EdgeInsets.only(left: 15, top: 10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    const Image(image: AssetImage("assets/icons/insta.png")),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Instgram",
-                            style: primaryFont.copyWith(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w600,
-                                color: const Color(0xff023047))),
-                        Text("Account",
-                            style: primaryFont.copyWith(
-                                fontSize: 14, color: const Color(0xff023047))),
-                      ],
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 15),
-                  child: Row(
-                    children: const [
-                      Image(image: AssetImage("assets/icons/arrowforword.png")),
+            child: InkWell(
+              onTap: () {
+                Get.to(() => ConnectSocialWebView(url: connectWithInstagram));
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      const Image(image: AssetImage("assets/icons/insta.png")),
+                      const SizedBox(
+                        width: 15,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("Instgram",
+                              style: primaryFont.copyWith(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w600,
+                                  color: const Color(0xff023047))),
+                          Text("Account",
+                              style: primaryFont.copyWith(
+                                  fontSize: 14,
+                                  color: const Color(0xff023047))),
+                        ],
+                      ),
                     ],
                   ),
-                ),
-              ],
+                  Padding(
+                    padding:  EdgeInsets.only(right: 15),
+                    child: Row(
+                      children:  [
+                        Image(
+                            image: AssetImage("assets/icons/arrowforword.png")),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
           const Padding(
