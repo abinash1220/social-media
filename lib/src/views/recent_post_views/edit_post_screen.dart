@@ -16,13 +16,13 @@ class _EditPostScreenState extends State<EditPostScreen> {
       ),
       body: Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
+              const Text(
                 '    Add Account',
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
@@ -35,7 +35,7 @@ class _EditPostScreenState extends State<EditPostScreen> {
               )
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 5,
           ),
           Row(
@@ -59,7 +59,7 @@ class _EditPostScreenState extends State<EditPostScreen> {
                           color: Colors.black,
                         ),
                         color: Colors.white),
-                    child: Center(
+                    child: const Center(
                         child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
@@ -74,7 +74,7 @@ class _EditPostScreenState extends State<EditPostScreen> {
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Padding(
@@ -84,10 +84,10 @@ class _EditPostScreenState extends State<EditPostScreen> {
               color: Colors.white,
               child: Column(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
-                  Row(
+                  const Row(
                     children: [
                       Text(
                         '      New Brand Post',
@@ -96,10 +96,10 @@ class _EditPostScreenState extends State<EditPostScreen> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
-                  Row(
+                  const Row(
                     children: [
                       Text(
                         '       Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed  do',
@@ -107,7 +107,7 @@ class _EditPostScreenState extends State<EditPostScreen> {
                       ),
                     ],
                   ),
-                  Row(
+                  const Row(
                     children: [
                       Text(
                         '        eiusmod tempor incididunt ut labore et dolore magna aliqua',
@@ -115,10 +115,10 @@ class _EditPostScreenState extends State<EditPostScreen> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
-                  Row(
+                  const Row(
                     children: [
                       Text(
                         '      #new ',
@@ -134,14 +134,14 @@ class _EditPostScreenState extends State<EditPostScreen> {
                       )
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 21,
                   ),
                   Container(
                     width: 334,
                     height: 196,
                     decoration: BoxDecoration(
-                      color: Color(0xFFE0E4E6),
+                      color: const Color(0xFFE0E4E6),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Image.asset('assets/icons/editpostimage.png'),
@@ -150,7 +150,7 @@ class _EditPostScreenState extends State<EditPostScreen> {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Row(
@@ -159,71 +159,71 @@ class _EditPostScreenState extends State<EditPostScreen> {
                 padding: const EdgeInsets.only(left: 12),
                 child: ElevatedButton(
                   onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5))),
                   child: Row(
                     children: [
                       Image.asset('assets/icons/phovideoimage.png'),
-                      Text(
+                      const Text(
                         ' Photo/video',
                         style: TextStyle(fontSize: 12.9),
                       )
                     ],
                   ),
-                  style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5))),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 12,
               ),
               ElevatedButton(
                 onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5))),
                 child: Row(
                   children: [
                     Image.asset('assets/icons/logation.png'),
-                    Text(
+                    const Text(
                       '  Chennai',
                       style: TextStyle(fontSize: 12.9),
                     )
                   ],
                 ),
-                style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5))),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 12,
               ),
               ElevatedButton(
                 onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5))),
                 child: Row(
                   children: [
                     Image.asset('assets/icons/shecduleimage.png'),
-                    Text(
+                    const Text(
                       '  Schedule',
                       style: TextStyle(fontSize: 12.9),
                     )
                   ],
                 ),
-                style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5))),
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 35,
           ),
           ElevatedButton(
               style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(6)),
-                  minimumSize: Size(334, 35.7)),
+                  minimumSize: const Size(334, 35.7)),
               onPressed: () {
                 //Navigator.of(context).push(MaterialPageRoute(
                   //  builder: (context) => InSightsScreen()));
               },
-              child: Text(
+              child: const Text(
                 'Save',
               ))
         ],

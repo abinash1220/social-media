@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class newbrandcontainer extends StatelessWidget {
   const newbrandcontainer({super.key});
@@ -19,13 +16,13 @@ class newbrandcontainer extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            SizedBox(
+                            const SizedBox(
                               width: 10,
                             ),
                             Image.asset(
                               'assets/images/NoPath - Copy (2).png',
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 20,
                             ),
                             Row(
@@ -34,19 +31,19 @@ class newbrandcontainer extends StatelessWidget {
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 5,
                                     ),
-                                    Text(
+                                    const Text(
                                       'New Brand Post',
                                       style: TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.bold),
-                                    ),SizedBox(width: 70,),
-                                    SizedBox(
+                                    ),const SizedBox(width: 70,),
+                                    const SizedBox(
                                       height: 5,
                                     ),
-                                    Text(
+                                    const Text(
                                         'Control every pixel to create\ncustomized & adaptive designs\n '),
                                     Row(
                                       mainAxisAlignment:
@@ -56,14 +53,14 @@ class newbrandcontainer extends StatelessWidget {
                                           'assets/icons/twitter.png',
                                           height: 20,
                                         ),
-                                        SizedBox(
+                                        const SizedBox(
                                           width: 10,
                                         ),
                                         Image.asset(
                                           'assets/icons/pinterest.png',
                                           height: 20,
                                         ),
-                                        SizedBox(
+                                        const SizedBox(
                                           width: 10,
                                         ),
                                         Image.asset(
@@ -79,7 +76,7 @@ class newbrandcontainer extends StatelessWidget {
                           ],
                         ),
                       ),
-                      Positioned(
+                      const Positioned(
                         top: 5,
                         right: 2,
                         child: Icon(Icons.more_vert)) 

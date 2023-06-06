@@ -1,7 +1,5 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:social_media_marketing/src/constant/app_colors.dart';
@@ -89,13 +87,13 @@ class _UserProfileViewScreenState extends State<UserProfileViewScreen> {
                     child: Stack(
                       children: [
                         profileController.userdata.isEmpty ?
-                        Image(image: AssetImage("assets/images/Ellipse 283.png"),
+                        const Image(image: AssetImage("assets/images/Ellipse 283.png"),
                         height: 100,
                        width: 100,
                        fit: BoxFit.cover,
                         ) : 
                        profileController.userdata.first.profilePicture == null ? 
-                       Image(image: AssetImage("assets/images/Ellipse 283.png",),
+                       const Image(image: AssetImage("assets/images/Ellipse 283.png",),
                        height: 100,
                        width: 100,
                        fit: BoxFit.cover,
@@ -123,10 +121,10 @@ class _UserProfileViewScreenState extends State<UserProfileViewScreen> {
                         profileController.updateImage(image: selectedImage);
 
                             },
-                            child: Image(image: AssetImage("assets/images/Group 1597.png"))),
+                            child: const Image(image: AssetImage("assets/images/Group 1597.png"))),
                         )
                         ])),
-                        SizedBox(height: 20,),
+                        const SizedBox(height: 20,),
                          Center(
                            child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -212,7 +210,7 @@ class _UserProfileViewScreenState extends State<UserProfileViewScreen> {
                                     padding: const EdgeInsets.only(left: 10),
                                     child: Row(
                                       children: [
-                                           profileController.userdata.isEmpty ? Text("") : Text(profileController.userdata.first.mobile,
+                                           profileController.userdata.isEmpty ? const Text("") : Text(profileController.userdata.first.mobile,
                                                               style: primaryFont.copyWith(
                                                               fontSize: 13,
                                                               color:  Colors.black,
@@ -260,9 +258,9 @@ class _UserProfileViewScreenState extends State<UserProfileViewScreen> {
           ),
         ),
         floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
         onPressed: () {},
         backgroundColor: Colors.red,
+        child: const Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: AnimatedBottomNavigationBar(

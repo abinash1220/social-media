@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:social_media_marketing/src/constant/app_colors.dart';
 import 'package:social_media_marketing/src/constant/app_fonts.dart';
-import 'package:social_media_marketing/src/views/forgot_password_views/verify_your_mail_screen.dart';
 import 'package:social_media_marketing/src/views/login_views/login_form_screen.dart';
 
 class CreateNewPasswordScreen extends StatefulWidget {

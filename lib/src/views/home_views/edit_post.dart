@@ -187,7 +187,7 @@ class _CreateScreenState extends State<EditScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
                     Padding(
@@ -400,7 +400,7 @@ class _CreateScreenState extends State<EditScreen> {
                             String tags = "";
 
                             for (var i = 0; i < detections.length; i++) {
-                              tags = tags + "," + detections[i];
+                              tags = "$tags,${detections[i]}";
                             }
 
                             postController.editPost(
@@ -436,9 +436,9 @@ class _CreateScreenState extends State<EditScreen> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
         onPressed: () {},
         backgroundColor: const Color(0xffED075C),
+        child: const Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: AnimatedBottomNavigationBar(

@@ -1,16 +1,12 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
-import 'package:social_media_marketing/src/constant/app_colors.dart';
 import 'package:social_media_marketing/src/views/home_views/create_post.dart';
 import 'package:social_media_marketing/src/views/planner_views/planner_screen.dart';
 import 'package:social_media_marketing/src/views/profile_views/profile_view_screen.dart';
 
 import '../../controllers/bottum_controller.dart';
 import '../home_views/home_page.dart';
-import '../home_views/home_page2.dart';
 import '../notification_views/notification_page.dart';
 
 class HomeBottomNavgationBar extends StatefulWidget {
@@ -50,14 +46,14 @@ class _HomeBottomNavgationBarState extends State<HomeBottomNavgationBar> {
             ? const notification() 
             : Controller.Getindex() == 3
             ? const ProfileViewScreen() 
-            : home(), 
+            : const home(), 
            
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
         onPressed: () {
           Get.to(const CreateScreen());
         },
         backgroundColor:const Color(0xff75032D),
+        child: const Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: AnimatedBottomNavigationBar(

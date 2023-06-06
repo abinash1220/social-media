@@ -1,30 +1,36 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:social_media_marketing/src/constant/app_constants.dart';
 import 'package:social_media_marketing/src/services/base_url/base_urls.dart';
 
-class OtpVerifyApiServices extends BaseApiService {
-  Future otpVerify(String otp) async {
+class ChangePasswordApiServices extends BaseApiService {
+  Future changePassword({
+    required String newPassword,
+    required dynamic oldPassword,
+  }) async {
     dynamic responseJson;
     try {
       var dio = Dio();
       final prefs = await SharedPreferences.getInstance();
-      String? authtoken = prefs.getString(authToken);
-      var response = await dio.post(baseURL + otpVerifyURL,
+      String? authtoken = prefs.getString("auth_token");
+
+      FormData formData = FormData.fromMap({
+        "password": newPassword,
+        "old_password": oldPassword,
+        "password_confirmation": newPassword
+      });
+
+      var response = await dio.post(baseURL + changePasswordURL,
           options: Options(
               headers: {
-                'Accept': 'application/json',
                 'Authorization': 'Bearer $authtoken',
               },
               followRedirects: false,
               validateStatus: (status) {
                 return status! <= 500;
               }),
-          data: {
-            "otp": otp,
-          });
-      print("::::::::<Otp Verify URL>::::::::status code:::::$otp:::::");
+          data: formData);
+      print("::::::::<Change Password>::::::::status code::::::::::");
       print(response.statusCode);
       print(response.data);
       responseJson = response;

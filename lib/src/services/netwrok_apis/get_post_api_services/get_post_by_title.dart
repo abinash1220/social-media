@@ -4,17 +4,17 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:social_media_marketing/src/constant/app_constants.dart';
 import 'package:social_media_marketing/src/services/base_url/base_urls.dart';
 
-class OtpVerifyApiServices extends BaseApiService {
-  Future otpVerify(String otp) async {
+class GetPostByTitleApiServices extends BaseApiService {
+  Future getPostByTitle(String title) async {
     dynamic responseJson;
     try {
       var dio = Dio();
       final prefs = await SharedPreferences.getInstance();
       String? authtoken = prefs.getString(authToken);
-      var response = await dio.post(baseURL + otpVerifyURL,
+      var response = await dio.post(baseURL + getPostURL,
           options: Options(
               headers: {
-                'Accept': 'application/json',
+                'Content-Type': 'application/json',
                 'Authorization': 'Bearer $authtoken',
               },
               followRedirects: false,
@@ -22,9 +22,9 @@ class OtpVerifyApiServices extends BaseApiService {
                 return status! <= 500;
               }),
           data: {
-            "otp": otp,
+            "title": title,
           });
-      print("::::::::<Otp Verify URL>::::::::status code:::::$otp:::::");
+      print("::::::::<Get Posts by title>::::::::status code::::::::::");
       print(response.statusCode);
       print(response.data);
       responseJson = response;

@@ -9,7 +9,7 @@ import 'package:webview_flutter/webview_flutter.dart';
 class ConnectSocialWebView extends StatefulWidget {
   String url;
 
-  ConnectSocialWebView({
+  ConnectSocialWebView({super.key, 
     required this.url,
   });
 

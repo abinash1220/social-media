@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:social_media_marketing/src/constant/app_colors.dart';
 import 'package:social_media_marketing/src/constant/app_fonts.dart';
 
@@ -39,16 +37,16 @@ class notification extends StatelessWidget {
           ),
         )), 
       body: ListView.separated(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         itemCount: 10,
         itemBuilder: (BuildContext context, int index) {
           return GestureDetector(
             onTap: () {},
             child: ListTile(
-                leading: CircleAvatar(radius: 40,
+                leading: const CircleAvatar(radius: 40,
                   backgroundImage: AssetImage('assets/images/images.jpeg'),
                 ),
-                title: Row(
+                title: const Row(
                   children: [
                     Text("Riyas",style: TextStyle(fontWeight: FontWeight.bold),),Text(' react to your post')
                   ],
@@ -58,7 +56,7 @@ class notification extends StatelessWidget {
           );
         },
         separatorBuilder: (BuildContext context, int index) {
-          return Divider(
+          return const Divider(
             height: 30,
           );
         },

@@ -1,9 +1,5 @@
-import 'package:calender_picker/date_picker_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:social_media_marketing/src/constant/app_colors.dart';
 import 'package:social_media_marketing/src/views/recent_post_views/recent_post_screen.dart';
 
@@ -87,12 +83,12 @@ class home2 extends StatelessWidget {
                       const SizedBox(
                         width: 20,
                       ),
-                      Row(
+                      const Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const [
+                            children: [
                               SizedBox(
                                 height: 5,
                               ),
@@ -114,20 +110,20 @@ class home2 extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
-                Post_container(),
-                SizedBox(
+                const Post_container(),
+                const SizedBox(
                   height: 15,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
+                    const Text(
                       'Recent post',
                       style: TextStyle(
                           color: Color(0xff023047),
@@ -136,26 +132,26 @@ class home2 extends StatelessWidget {
                     ),
                     InkWell(
                       onTap: () {
-                        Get.to(RecentPostScreen());
+                        Get.to(const RecentPostScreen());
                       },
-                      child: Text(
+                      child: const Text(
                         'See All',
                         style: TextStyle(color: Colors.blue),
                       ),
                     )
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(3.0),
+                const Padding(
+                  padding: EdgeInsets.all(3.0),
                   child: newbrandcontainer(),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
@@ -171,17 +167,17 @@ class home2 extends StatelessWidget {
                     )
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(3.0),
+                const Padding(
+                  padding: EdgeInsets.all(3.0),
                   child: newbrandcontainer(),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
@@ -197,10 +193,10 @@ class home2 extends StatelessWidget {
                     )
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
-                listviewsugetion(),
+                const listviewsugetion(),
               ],
             ),
           ],

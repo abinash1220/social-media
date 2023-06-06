@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:social_media_marketing/src/constant/app_colors.dart';
 import 'package:social_media_marketing/src/constant/app_fonts.dart';
@@ -100,8 +98,8 @@ class _PostScheduleScreenState extends State<PostScheduleScreen> {
                                     
                                 ],
                               ),
-                              Row(
-                                children:const [
+                              const Row(
+                                children:[
                                   Image(image: AssetImage("assets/icons/arrow.png"))
                                 ],
                               ),
@@ -146,8 +144,8 @@ class _PostScheduleScreenState extends State<PostScheduleScreen> {
                                   
                               ],
                             ),
-                            Row(
-                              children:const [
+                            const Row(
+                              children:[
                                 Image(image: AssetImage("assets/icons/arrow.png"))
                               ],
                             ),
@@ -191,8 +189,8 @@ class _PostScheduleScreenState extends State<PostScheduleScreen> {
                                   
                               ],
                             ),
-                            Row(
-                              children:const [
+                            const Row(
+                              children:[
                                 Image(image: AssetImage("assets/icons/arrow.png"))
                               ],
                             ),
@@ -236,8 +234,8 @@ class _PostScheduleScreenState extends State<PostScheduleScreen> {
                                   
                               ],
                             ),
-                            Row(
-                              children:const [
+                            const Row(
+                              children:[
                                 Image(image: AssetImage("assets/icons/arrow.png"))
                               ],
                             ),
@@ -281,8 +279,8 @@ class _PostScheduleScreenState extends State<PostScheduleScreen> {
                                   
                               ],
                             ),
-                            Row(
-                              children:const [
+                            const Row(
+                              children:[
                                 Image(image: AssetImage("assets/icons/arrow.png"))
                               ],
                             ),
@@ -326,8 +324,8 @@ class _PostScheduleScreenState extends State<PostScheduleScreen> {
                                   
                               ],
                             ),
-                            Row(
-                              children:const [
+                            const Row(
+                              children:[
                                 Image(image: AssetImage("assets/icons/arrow.png"))
                               ],
                             ),
@@ -371,8 +369,8 @@ class _PostScheduleScreenState extends State<PostScheduleScreen> {
                                   
                               ],
                             ),
-                            Row(
-                              children:const [
+                            const Row(
+                              children:[
                                 Image(image: AssetImage("assets/icons/arrow.png"))
                               ],
                             ),
@@ -415,7 +413,7 @@ class _PostScheduleScreenState extends State<PostScheduleScreen> {
                                   const SizedBox(height: 10,),
                                    Padding(
                                      padding: const EdgeInsets.only(left: 10,right: 10),
-                                     child: Container(
+                                     child: SizedBox(
                                               height: 42,
                                               child: TextField(
                                          decoration: InputDecoration(
@@ -435,7 +433,7 @@ class _PostScheduleScreenState extends State<PostScheduleScreen> {
                                    ),
                                    Padding(
                                      padding: const EdgeInsets.only(left: 10,right: 10,top: 10),
-                                     child: Container(
+                                     child: SizedBox(
                                               height: 42,
                                               child: TextField(
                                          decoration: InputDecoration(
@@ -453,7 +451,7 @@ class _PostScheduleScreenState extends State<PostScheduleScreen> {
                                                 labelStyle: primaryFont.copyWith(color:const Color(0xff023047))),
                                                                  )),
                                    ),
-                                   SizedBox(height: 5,),
+                                   const SizedBox(height: 5,),
                                   Row(
                                     children: [
                                        Padding(

@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class view_socialmedia extends StatelessWidget {
   const view_socialmedia({super.key});
@@ -16,21 +13,21 @@ class view_socialmedia extends StatelessWidget {
                                     'assets/icons/twitter.png',
                                     height: 20,
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 10,
                                   ),
                                   Image.asset(
                                     'assets/icons/pinterest.png',
                                     height: 20,
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 10,
                                   ),
                                   Image.asset(
                                     'assets/icons/linkedin.png',
                                     height: 20,
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 30,
                                   ),
                                   InkWell(
@@ -42,7 +39,7 @@ class view_socialmedia extends StatelessWidget {
                                           borderRadius:
                                               BorderRadius.circular(67),
                                           color: Colors.white),
-                                      child: Center(child: Text('view')),
+                                      child: const Center(child: Text('view')),
                                     ),
                                   ),
                                 ],

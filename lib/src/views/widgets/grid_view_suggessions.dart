@@ -1,7 +1,5 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:social_media_marketing/src/constant/app_colors.dart';
 import 'package:social_media_marketing/src/constant/app_fonts.dart';
@@ -71,11 +69,11 @@ class Gridviewsugetion extends StatelessWidget {
             shrinkWrap: true,
             itemBuilder: (context, index) {
               return Padding(
-                padding: EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(8.0),
                 child: Container(
                   child: Column(
                     children: [
-                      Container(
+                      SizedBox(
                         height: 74,
                         width: 70,
                         child: Image.network(profileController
@@ -89,11 +87,11 @@ class Gridviewsugetion extends StatelessWidget {
             });
       }),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
         onPressed: () {
           Get.to(const CreateScreen());
         },
         backgroundColor: const Color(0xff75032D),
+        child: const Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: AnimatedBottomNavigationBar(

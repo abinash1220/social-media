@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:social_media_marketing/src/constant/app_colors.dart';
 import 'package:social_media_marketing/src/constant/app_fonts.dart';
@@ -165,8 +163,8 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
                                   });
                                 },
                                 child: isCpasswordVisible
-                                    ? Icon(Icons.visibility)
-                                    : Icon(Icons.visibility_off)),
+                                    ? const Icon(Icons.visibility)
+                                    : const Icon(Icons.visibility_off)),
                             hintText: "",
                             labelStyle: primaryFont.copyWith(
                                 color: const Color(0xff023047))),
@@ -211,7 +209,7 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
                                     color: Color.fromARGB(255, 247, 114, 158),
                                   )
                                 ]),
-                            child: Center(
+                            child: const Center(
                                 child: CircularProgressIndicator(
                               color: Colors.white,
                             )),

@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:social_media_marketing/src/controllers/posts_controller.dart';
 import 'package:social_media_marketing/src/controllers/profile_controller.dart';
 import 'package:social_media_marketing/src/views/home_views/home_page2.dart';
+import 'package:social_media_marketing/src/views/home_views/search_posts_screen.dart';
 import 'package:social_media_marketing/src/views/home_views/suggestions_screen.dart';
 import 'package:social_media_marketing/src/views/widgets/grid_view_suggessions.dart';
 import 'package:social_media_marketing/src/views/widgets/post_menu/post_menu_options.dart';
@@ -53,7 +54,7 @@ class _homeState extends State<home> {
               ),
               textButtonTheme: TextButtonThemeData(
                 style: TextButton.styleFrom(
-                  primary: Color.fromARGB(255, 42, 59, 158),
+                  foregroundColor: const Color.fromARGB(255, 42, 59, 158),
                 ),
               ),
             ),
@@ -76,7 +77,7 @@ class _homeState extends State<home> {
     postController.getSuggessionPosts();
     postController.getPostsByDate(
         date: formatDate(date, [yyyy, "-", mm, "-", dd]));
-        profileController.getUserProfile();
+    profileController.getUserProfile();
   }
 
   @override
@@ -100,7 +101,7 @@ class _homeState extends State<home> {
               children: [
                 InkWell(
                   onTap: () {
-                    Get.to(const home2());
+                    Get.to(const SearchPostScreen());
                   },
                   child: Container(
                       height: 16,
@@ -113,7 +114,8 @@ class _homeState extends State<home> {
                           child: Icon(
                         Icons.search,
                         color: Colors.black,
-                      ))),
+                      ))
+                      ),
                 ),
               ],
             ),
@@ -141,98 +143,129 @@ class _homeState extends State<home> {
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: const EdgeInsets.only(bottom: 15),
-                          child: Container(
-                            width: size.width,
-                            height: 119,
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                boxShadow: const [
-                                  BoxShadow(
-                                    offset: Offset(0, 1),
-                                    blurRadius: 3.20,
-                                    spreadRadius: 0.50,
-                                    color: Color.fromARGB(255, 201, 200, 200),
-                                  )
-                                ],
-                                borderRadius: BorderRadius.circular(6)),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
+                          child: Stack(
+                            children: [
+                              Container(
+                                width: size.width,
+                                height: 119,
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    boxShadow: const [
+                                      BoxShadow(
+                                        offset: Offset(0, 1),
+                                        blurRadius: 3.20,
+                                        spreadRadius: 0.50,
+                                        color:
+                                            Color.fromARGB(255, 201, 200, 200),
+                                      )
+                                    ],
+                                    borderRadius: BorderRadius.circular(6)),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
-                                      ClipRRect(
-                                        borderRadius: BorderRadius.circular(3),
-                                        child: Image.network(
-                                          postController
-                                              .getPostsByDateList[index]
-                                              .imagePath,
-                                          height: 100,
-                                          width: 100,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                      const SizedBox(
-                                        width: 10,
-                                      ),
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                      Row(
                                         mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
+                                            MainAxisAlignment.start,
                                         children: [
-                                          Text(
-                                            postController
-                                                .getPostsByDateList[index]
-                                                .title,
-                                            style: primaryFont.copyWith(
-                                                fontSize: 14,
-                                                color: Colors.black,
-                                                fontWeight: FontWeight.w600),
+                                          ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(3),
+                                            child: Image.network(
+                                              postController
+                                                  .getPostsByDateList[index]
+                                                  .imagePath,
+                                              height: 100,
+                                              width: 100,
+                                              fit: BoxFit.cover,
+                                            ),
                                           ),
-                                          Text(
-                                            postController
-                                                .getPostsByDateList[index]
-                                                .content,
-                                            style: primaryFont.copyWith(
-                                                fontSize: 9,
-                                                color: Colors.black,
-                                                fontWeight: FontWeight.w400,
-                                                height: 1.5),
+                                          const SizedBox(
+                                            width: 10,
                                           ),
-                                          Text(
-                                            postController
-                                                .getPostsByDateList[index].meta,
-                                            style: primaryFont.copyWith(
-                                                fontSize: 9,
-                                                color: Colors.blue,
-                                                fontWeight: FontWeight.w500),
-                                          ),
-                                          Row(
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
                                             mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
+                                                MainAxisAlignment.spaceAround,
                                             children: [
-                                              Image.asset(
-                                                'assets/icons/twitter.png',
-                                                height: 20,
+                                              Container(
+                                                width: size.width - 230,
+                                                child: Text(
+                                                  postController
+                                                      .getPostsByDateList[index]
+                                                      .title,
+                                                  maxLines: 1,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  style: primaryFont.copyWith(
+                                                      fontSize: 14,
+                                                      color: Colors.black,
+                                                      fontWeight:
+                                                          FontWeight.w600),
+                                                ),
                                               ),
-                                              const SizedBox(
-                                                width: 10,
+                                              Container(
+                                                width: size.width - 250,
+                                                child: Text(
+                                                  postController
+                                                      .getPostsByDateList[index]
+                                                      .content,
+                                                  maxLines: 2,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  style: primaryFont.copyWith(
+                                                      fontSize: 9,
+                                                      color: Colors.black,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      height: 1.5),
+                                                ),
                                               ),
-                                              Image.asset(
-                                                'assets/icons/pinterest.png',
-                                                height: 20,
+                                              Container(
+                                                width: size.width - 250,
+                                                child: Text(
+                                                  postController
+                                                      .getPostsByDateList[index]
+                                                      .meta,
+                                                  maxLines: 1,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  style: primaryFont.copyWith(
+                                                      fontSize: 9,
+                                                      color: Colors.blue,
+                                                      fontWeight:
+                                                          FontWeight.w500),
+                                                ),
                                               ),
-                                              const SizedBox(
-                                                width: 10,
-                                              ),
-                                              Image.asset(
-                                                'assets/icons/linkedin.png',
-                                                height: 20,
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Image.asset(
+                                                    'assets/icons/twitter.png',
+                                                    height: 20,
+                                                  ),
+                                                  const SizedBox(
+                                                    width: 10,
+                                                  ),
+                                                  Image.asset(
+                                                    'assets/icons/pinterest.png',
+                                                    height: 20,
+                                                  ),
+                                                  const SizedBox(
+                                                    width: 10,
+                                                  ),
+                                                  Image.asset(
+                                                    'assets/icons/linkedin.png',
+                                                    height: 20,
+                                                  ),
+                                                ],
                                               ),
                                             ],
                                           ),
@@ -240,12 +273,20 @@ class _homeState extends State<home> {
                                       ),
                                     ],
                                   ),
-                                  postMenuOptions(
-                                      getPostsData: postController
-                                          .getPostsByDateList[index])
-                                ],
+                                ),
                               ),
-                            ),
+                              Positioned(
+                                top: 2,
+                                right: 0,
+                                child: Row(
+                                  children: [
+                                    postMenuOptions(
+                                        getPostsData: postController
+                                            .getPostsByDateList[index])
+                                  ],
+                                ),
+                              ),
+                            ],
                           ),
                         );
                       }),
@@ -347,7 +388,7 @@ class _homeState extends State<home> {
                   InkWell(
                     onTap: () {
                       Get.to(const SuggestionScreen());
-                      Get.to(()=> Gridviewsugetion());
+                      Get.to(() => Gridviewsugetion());
                     },
                     child: Text("See All",
                         style: primaryFont.copyWith(
@@ -360,7 +401,7 @@ class _homeState extends State<home> {
               const SizedBox(
                 height: 15,
               ),
-              listviewsugetion()
+              const listviewsugetion()
             ],
           );
         }),

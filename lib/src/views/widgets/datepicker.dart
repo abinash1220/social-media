@@ -1,9 +1,6 @@
 import 'package:calender_picker/date_picker_widget.dart';
 import 'package:date_format/date_format.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:social_media_marketing/src/controllers/posts_controller.dart';
 
@@ -28,14 +25,14 @@ class datepickerwidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          SizedBox(
+          const SizedBox(
             height: 5,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
+              const Padding(
+                padding: EdgeInsets.all(8.0),
                 child: Text(
                   'Easy To Select',
                   style: TextStyle(
@@ -54,9 +51,9 @@ class datepickerwidget extends StatelessWidget {
                         dd,
                         ",",
                       ]),
-                      style: TextStyle(color: Colors.white),
+                      style: const TextStyle(color: Colors.white),
                     ),
-                    Icon(
+                    const Icon(
                       Icons.calendar_month,
                       color: Colors.white,
                     )

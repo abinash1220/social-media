@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:get/get.dart';
 import 'package:social_media_marketing/src/constant/app_colors.dart';
@@ -59,7 +57,7 @@ class _VerifyYourMailScreenState extends State<VerifyYourMailScreen> {
                 context: context,
                 builder: (context){
                 return AlertDialog(
-                    title: Text("Verification Code"),
+                    title: const Text("Verification Code"),
                     content: Text('Code entered is $verificationCode'),
                 );
                 }

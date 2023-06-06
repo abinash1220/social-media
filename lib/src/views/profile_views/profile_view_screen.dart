@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:social_media_marketing/src/constant/app_colors.dart';
 import 'package:social_media_marketing/src/constant/app_fonts.dart';
 import 'package:social_media_marketing/src/controllers/auth_controller.dart';
-import 'package:social_media_marketing/src/views/login_views/login_form_screen.dart';
 import 'package:social_media_marketing/src/views/profile_views/add_social_media_screen.dart';
 import 'package:social_media_marketing/src/views/profile_views/password_change_screen.dart';
 import 'package:social_media_marketing/src/views/profile_views/post_shedule_screen.dart';
 import 'package:social_media_marketing/src/views/profile_views/support_screen.dart';
 import 'package:social_media_marketing/src/views/profile_views/user_profile_view_screen.dart';
-import 'package:social_media_marketing/src/views/widgets/bottumnav-bar.dart';
 
 class ProfileViewScreen extends StatefulWidget {
   const ProfileViewScreen({super.key});

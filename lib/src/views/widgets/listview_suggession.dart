@@ -1,6 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:social_media_marketing/src/controllers/posts_controller.dart';
 
@@ -9,7 +7,7 @@ class listviewsugetion extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 150,
       child: GetBuilder<PostsController>(builder: (profileController) {
         return ListView.builder(
@@ -19,11 +17,11 @@ class listviewsugetion extends StatelessWidget {
             shrinkWrap: true,
             itemBuilder: (context, index) {
               return Padding(
-                padding: EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(8.0),
                 child: Container(
                   child: Column(
                     children: [
-                      Container(
+                      SizedBox(
                         height: 74,
                         width: 70,
                         child: Image.network(profileController

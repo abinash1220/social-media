@@ -1,7 +1,5 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:social_media_marketing/src/constant/app_colors.dart';
 import 'package:social_media_marketing/src/constant/app_fonts.dart';
@@ -112,10 +110,10 @@ class _AddSocialMediaScreenState extends State<AddSocialMediaScreen> {
                       ),
                     ],
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 15),
+                  const Padding(
+                    padding: EdgeInsets.only(right: 15),
                     child: Row(
-                      children: const [
+                      children: [
                         Image(
                             image: AssetImage("assets/icons/arrowforword.png")),
                       ],
@@ -162,7 +160,7 @@ class _AddSocialMediaScreenState extends State<AddSocialMediaScreen> {
                       ),
                     ],
                   ),
-                  Padding(
+                  const Padding(
                     padding:  EdgeInsets.only(right: 15),
                     child: Row(
                       children:  [
@@ -207,10 +205,10 @@ class _AddSocialMediaScreenState extends State<AddSocialMediaScreen> {
                     ),
                   ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 15),
+                const Padding(
+                  padding: EdgeInsets.only(right: 15),
                   child: Row(
-                    children: const [
+                    children: [
                       Image(image: AssetImage("assets/icons/arrowforword.png")),
                     ],
                   ),
@@ -250,10 +248,10 @@ class _AddSocialMediaScreenState extends State<AddSocialMediaScreen> {
                     ),
                   ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 15),
+                const Padding(
+                  padding: EdgeInsets.only(right: 15),
                   child: Row(
-                    children: const [
+                    children: [
                       Image(image: AssetImage("assets/icons/arrowforword.png")),
                     ],
                   ),
@@ -294,10 +292,10 @@ class _AddSocialMediaScreenState extends State<AddSocialMediaScreen> {
                     ),
                   ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 15),
+                const Padding(
+                  padding: EdgeInsets.only(right: 15),
                   child: Row(
-                    children: const [
+                    children: [
                       Image(image: AssetImage("assets/icons/arrowforword.png")),
                     ],
                   ),
@@ -314,9 +312,9 @@ class _AddSocialMediaScreenState extends State<AddSocialMediaScreen> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
         onPressed: () {},
         backgroundColor: Colors.red,
+        child: const Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: AnimatedBottomNavigationBar(

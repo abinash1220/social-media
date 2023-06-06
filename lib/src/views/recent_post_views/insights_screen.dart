@@ -81,11 +81,11 @@ class _InSightsScreenState extends State<InSightsScreen> {
                         child: Obx(
                             () => Column(
                             children: [
-                              Row(
+                              const Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   Row(
-                                    children:const [
+                                    children:[
                                       Image(
                                         height: 28,
                                         width: 28,
@@ -106,7 +106,7 @@ class _InSightsScreenState extends State<InSightsScreen> {
                                     ],
                                   ),
                                   Row(
-                                    children:const [
+                                    children:[
                                       Icon(Icons.cancel_outlined)
                                     ],
                                   ),
@@ -558,7 +558,7 @@ class _InSightsScreenState extends State<InSightsScreen> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(right: 10),
-                    child: Container(
+                    child: SizedBox(
                       height: 150,
                       child: SfCartesianChart(
                         // Chart title
@@ -599,11 +599,11 @@ class _InSightsScreenState extends State<InSightsScreen> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-       onPressed: () {
+        onPressed: () {
           Get.to(const CreateScreen());
         },
         backgroundColor:const Color(0xff75032D),
+        child: const Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: AnimatedBottomNavigationBar(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:social_media_marketing/src/constant/app_colors.dart';
 import 'package:social_media_marketing/src/constant/app_fonts.dart';
+import 'package:social_media_marketing/src/controllers/posts_controller.dart';
 import 'package:social_media_marketing/src/models/posts_models/get_post_model.dart';
 import 'package:social_media_marketing/src/views/home_views/edit_post.dart';
 
@@ -14,6 +15,8 @@ class postMenuOptions extends StatefulWidget {
 }
 
 class _PostMenuOptionsState extends State<postMenuOptions> {
+  final postController = Get.find<PostsController>();
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -25,21 +28,20 @@ class _PostMenuOptionsState extends State<postMenuOptions> {
             child: PopupMenuButton(
               onSelected: (value) {
                 if (value == 1) {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
+                  Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => EditScreen(
                             getPostsData: widget.getPostsData,
                           )));
                 } else if (value == 0) {
-                  _showlogPost(context);
+                  _showlogPost(context, postId: widget.getPostsData.id);
                 } else if (value == 2) {
-                  _showlog(context);
+                  _showlog(context, postId: widget.getPostsData.id);
                 }
               },
               itemBuilder: (BuildContext context) => [
-                PopupMenuItem(value: 0, child: const Text("Post")),
-                PopupMenuItem(value: 1, child: const Text("Edit")),
-                PopupMenuItem(value: 2, child: const Text("Deleted")),
+                const PopupMenuItem(value: 0, child: Text("Post")),
+                const PopupMenuItem(value: 1, child: Text("Edit")),
+                const PopupMenuItem(value: 2, child: Text("Deleted")),
               ],
             ),
           ),
@@ -48,7 +50,7 @@ class _PostMenuOptionsState extends State<postMenuOptions> {
     );
   }
 
-  Future<void> _showlog(BuildContext context) {
+  Future<void> _showlog(BuildContext context, {required int postId}) {
     return showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -84,6 +86,7 @@ class _PostMenuOptionsState extends State<postMenuOptions> {
                       children: [
                         InkWell(
                           onTap: () {
+                            Get.back();
                             //Navigator.push(context, MaterialPageRoute(builder: (context) => const LoaderScreen()));
                           },
                           child: Container(
@@ -103,7 +106,7 @@ class _PostMenuOptionsState extends State<postMenuOptions> {
                         ),
                         InkWell(
                           onTap: () {
-                            Get.back();
+                            postController.deletePost(postId);
                           },
                           child: Container(
                             height: 35,
@@ -138,7 +141,7 @@ class _PostMenuOptionsState extends State<postMenuOptions> {
   }
 
   //post
-  Future<void> _showlogPost(BuildContext context) {
+  Future<void> _showlogPost(BuildContext context, {required int postId}) {
     return showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -174,6 +177,7 @@ class _PostMenuOptionsState extends State<postMenuOptions> {
                       children: [
                         InkWell(
                           onTap: () {
+                            Get.back();
                             //Navigator.push(context, MaterialPageRoute(builder: (context) => const LoaderScreen()));
                           },
                           child: Container(
@@ -193,7 +197,7 @@ class _PostMenuOptionsState extends State<postMenuOptions> {
                         ),
                         InkWell(
                           onTap: () {
-                            Get.back();
+                            postController.postPublish(postId);
                           },
                           child: Container(
                             height: 35,

@@ -8,10 +8,13 @@ import 'package:social_media_marketing/src/controllers/auth_controller.dart';
 import 'package:social_media_marketing/src/models/posts_models/get_post_model.dart';
 import 'package:social_media_marketing/src/models/posts_models/post_suggesions_model.dart';
 import 'package:social_media_marketing/src/services/netwrok_apis/create_post_api_services/create_post_api_services.dart';
+import 'package:social_media_marketing/src/services/netwrok_apis/create_post_api_services/delete_api_services.dart';
 import 'package:social_media_marketing/src/services/netwrok_apis/create_post_api_services/edit_post_api_services.dart';
 import 'package:social_media_marketing/src/services/netwrok_apis/create_post_api_services/get_suggessions_post.dart';
+import 'package:social_media_marketing/src/services/netwrok_apis/create_post_api_services/publish_now_api_services.dart';
 import 'package:social_media_marketing/src/services/netwrok_apis/get_post_api_services/get_post_api_services.dart';
 import 'package:social_media_marketing/src/services/netwrok_apis/get_post_api_services/get_post_by_date.dart';
+import 'package:social_media_marketing/src/services/netwrok_apis/get_post_api_services/get_post_by_title.dart';
 import 'package:social_media_marketing/src/views/widgets/bottumnav-bar.dart';
 
 class PostsController extends GetxController {
@@ -23,6 +26,14 @@ class PostsController extends GetxController {
 
   GetSuggesionsApiServices getSuggesionsApiServices =
       GetSuggesionsApiServices();
+
+  GetPostByTitleApiServices getPostByTitleApiServices =
+      GetPostByTitleApiServices();
+
+  DeletePostApiServices deletePostApiServices = DeletePostApiServices();
+
+  EditPostStatusApiServices editPostStatusApiServices =
+      EditPostStatusApiServices();
 
   DateTime selectedDate = DateTime.now();
   RxBool isLoading = false.obs;
@@ -235,6 +246,75 @@ class PostsController extends GetxController {
 
       postSuggestionsList = postSuggesionsModel.postsuggestion;
       update();
+    }
+  }
+
+  List<GetPostsData> searchPostList = [];
+  getPostByKeyWord(String title) async {
+    dio.Response<dynamic> response =
+        await getPostByTitleApiServices.getPostByTitle(title);
+
+    if (response.statusCode == 200) {
+      GetPosts getPosts = GetPosts.fromJson(response.data);
+
+      searchPostList = getPosts.data;
+      update();
+    }
+  }
+
+  deletePost(int postId) async {
+    dio.Response<dynamic> response =
+        await deletePostApiServices.deletePost(postId: postId);
+
+    if (response.statusCode == 200) {
+      getScheduledPost(status: "draft");
+      getDraftPost(status: "scheduled");
+      Get.back();
+      Get.rawSnackbar(
+          messageText: Text(
+            "Post Deleted Successfully",
+            style: primaryFont.copyWith(
+              color: Colors.white,
+            ),
+          ),
+          backgroundColor: Colors.green);
+    } else {
+      Get.back();
+      Get.rawSnackbar(
+          messageText: Text(
+            response.data["message"],
+            style: primaryFont.copyWith(
+              color: Colors.white,
+            ),
+          ),
+          backgroundColor: Colors.red);
+    }
+  }
+
+  postPublish(int postId) async {
+    dio.Response<dynamic> response = await editPostStatusApiServices
+        .editPostStatus(status: 'publish', postId: postId);
+
+    if (response.statusCode == 200) {
+      Get.back();
+      Get.rawSnackbar(
+          messageText: Text(
+            "Post Published Successfully",
+            style: primaryFont.copyWith(
+              color: Colors.white,
+            ),
+          ),
+          backgroundColor: Colors.green);
+    } else {
+      Get.back();
+      Get.rawSnackbar(
+          messageText: Text(
+            response.data["message"],
+            style: primaryFont.copyWith(
+              color: Colors.white,
+            ),
+          ),
+          backgroundColor: Colors.red);
     }
   }
 }

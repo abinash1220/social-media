@@ -240,6 +240,6 @@ class AuthController extends GetxController {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString(authToken, "null");
 
-    Get.offAll(() => LoginScreen());
+    Get.offAll(() => const LoginScreen());
   }
 }

@@ -1,7 +1,5 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:social_media_marketing/src/constant/app_colors.dart';
 import 'package:social_media_marketing/src/constant/app_fonts.dart';
@@ -79,11 +77,11 @@ class _RecentPostScreenState extends State<RecentPostScreen> {
           ),
         ),
         floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-       onPressed: () {
+        onPressed: () {
           Get.to(const CreateScreen());
         },
         backgroundColor:const Color(0xff75032D),
+        child: const Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: AnimatedBottomNavigationBar(

@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:social_media_marketing/src/constant/app_colors.dart';
@@ -204,7 +203,7 @@ class _SupportScreenState extends State<SupportScreen> {
                                 ]
                               ),
                               child: Center(
-                                            child:profileController.loder == true ? CircularProgressIndicator(color: Colors.white,) : Text("SAVE",
+                                            child:profileController.loder == true ? const CircularProgressIndicator(color: Colors.white,) : Text("SAVE",
                                             style: primaryFont.copyWith(
                                               fontSize: 12,
                                               color: const Color(0xffF9FAFC),

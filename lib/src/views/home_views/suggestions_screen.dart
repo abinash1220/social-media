@@ -89,10 +89,10 @@ class _SuggestionScreenState extends State<SuggestionScreen> {
         body: SafeArea(
           child: Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
-              Row(
+              const Row(
                 children: [
                   Text(
                     '   Festival Posts',
@@ -100,14 +100,14 @@ class _SuggestionScreenState extends State<SuggestionScreen> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 25,
               ),
               listimage(),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
-              Row(
+              const Row(
                 children: [
                   Text(
                     '   Events Posts',
@@ -115,14 +115,14 @@ class _SuggestionScreenState extends State<SuggestionScreen> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 25,
               ),
               listimage2(),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
-              Row(
+              const Row(
                 children: [
                   Text(
                     '   Business Posts',
@@ -130,7 +130,7 @@ class _SuggestionScreenState extends State<SuggestionScreen> {
                   )
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 25,
               ),
               listimage3()
@@ -138,11 +138,11 @@ class _SuggestionScreenState extends State<SuggestionScreen> {
           ),
         ),
         floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-       onPressed: () {
+        onPressed: () {
           Get.to(const CreateScreen());
         },
         backgroundColor:const Color(0xff75032D),
+        child: const Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: AnimatedBottomNavigationBar(
@@ -159,7 +159,7 @@ class _SuggestionScreenState extends State<SuggestionScreen> {
   }
 
   Widget listimage() {
-    return Container(
+    return SizedBox(
       height: 150,
       child: ListView.builder(
           itemCount: festiveimage.length,
@@ -179,7 +179,7 @@ class _SuggestionScreenState extends State<SuggestionScreen> {
                     )),
                     Text(
                       subtitile[Index],
-                      style: TextStyle(color: Colors.grey),
+                      style: const TextStyle(color: Colors.grey),
                     ),
                   ],
                 ),
@@ -190,7 +190,7 @@ class _SuggestionScreenState extends State<SuggestionScreen> {
   }
 
   Widget listimage2() {
-    return Container(
+    return SizedBox(
       height: 150,
       child: ListView.builder(
           itemCount: eventsimage.length,
@@ -210,7 +210,7 @@ class _SuggestionScreenState extends State<SuggestionScreen> {
                     )),
                     Text(
                       subtitile[Index],
-                      style: TextStyle(color: Colors.grey),
+                      style: const TextStyle(color: Colors.grey),
                     )
                   ],
                 ),
@@ -221,7 +221,7 @@ class _SuggestionScreenState extends State<SuggestionScreen> {
   }
 
   Widget listimage3() {
-    return Container(
+    return SizedBox(
       height: 150,
       child: ListView.builder(
           itemCount: businessimage.length,
@@ -241,7 +241,7 @@ class _SuggestionScreenState extends State<SuggestionScreen> {
                     )),
                     Text(
                       subtitile[Index],
-                      style: TextStyle(color: Colors.grey),
+                      style: const TextStyle(color: Colors.grey),
                     )
                   ],
                 ),

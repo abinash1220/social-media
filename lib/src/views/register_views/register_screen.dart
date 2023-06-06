@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:social_media_marketing/src/constant/app_colors.dart';
 import 'package:social_media_marketing/src/constant/app_fonts.dart';
 import 'package:social_media_marketing/src/controllers/auth_controller.dart';
 import 'package:social_media_marketing/src/models/register_model.dart';
-import 'package:social_media_marketing/src/views/register_views/otp_screen.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -206,8 +203,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 });
                               },
                               child: isPasswordVisible
-                                  ? Icon(Icons.visibility)
-                                  : Icon(Icons.visibility_off)),
+                                  ? const Icon(Icons.visibility)
+                                  : const Icon(Icons.visibility_off)),
                           hintText: "Enter Your Password",
                           labelStyle: primaryFont.copyWith(
                               color: const Color(0xff023047))),
@@ -266,8 +263,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 });
                               },
                               child: isCpasswordVisible
-                                  ? Icon(Icons.visibility)
-                                  : Icon(Icons.visibility_off)),
+                                  ? const Icon(Icons.visibility)
+                                  : const Icon(Icons.visibility_off)),
                           hintText: "Confirm Your Password",
                           labelStyle: primaryFont.copyWith(
                               color: const Color(0xff023047))),

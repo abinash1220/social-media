@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:social_media_marketing/src/constant/app_colors.dart';
 import 'package:social_media_marketing/src/constant/app_fonts.dart';
-import 'package:social_media_marketing/src/views/login_views/login_form_screen.dart';
 import 'package:social_media_marketing/src/views/splash_views/connect_first_account_screen.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
@@ -24,7 +21,7 @@ class _LoaderScreenState extends State<LoaderScreen> {
 
   redirectToNext() async {
     await Future.delayed(const Duration(seconds: 2));
-    Navigator.push(
+    Navigator.pushReplacement(
         context,
         MaterialPageRoute(
             builder: (context) => const ConnectFirstAccountScreen()));
