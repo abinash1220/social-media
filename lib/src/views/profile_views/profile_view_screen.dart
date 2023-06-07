@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:social_media_marketing/src/constant/app_colors.dart';
 import 'package:social_media_marketing/src/constant/app_fonts.dart';
 import 'package:social_media_marketing/src/controllers/auth_controller.dart';
+import 'package:social_media_marketing/src/views/planner_views/planner_screen.dart';
 import 'package:social_media_marketing/src/views/profile_views/add_social_media_screen.dart';
 import 'package:social_media_marketing/src/views/profile_views/password_change_screen.dart';
 import 'package:social_media_marketing/src/views/profile_views/post_shedule_screen.dart';
@@ -172,7 +173,8 @@ class _ProfileViewScreenState extends State<ProfileViewScreen> {
             const SizedBox(height: 10),
             InkWell(
               onTap: () {
-                Get.to(const PostScheduleScreen());
+                // Get.to(const PostScheduleScreen());
+                Get.to(()=> const PlannerScreen());
               },
               child: Container(
                 height: 37,

@@ -5,6 +5,7 @@ import 'package:social_media_marketing/src/constant/app_fonts.dart';
 import 'package:social_media_marketing/src/controllers/posts_controller.dart';
 import 'package:social_media_marketing/src/models/posts_models/get_post_model.dart';
 import 'package:social_media_marketing/src/views/home_views/edit_post.dart';
+import 'package:social_media_marketing/src/views/recent_post_views/insights_screen.dart';
 
 class postMenuOptions extends StatefulWidget {
   GetPostsData getPostsData;
@@ -36,13 +37,24 @@ class _PostMenuOptionsState extends State<postMenuOptions> {
                   _showlogPost(context, postId: widget.getPostsData.id);
                 } else if (value == 2) {
                   _showlog(context, postId: widget.getPostsData.id);
+                } else if (value == 3) {
+                  Get.to(() => InSightsScreen());
                 }
               },
-              itemBuilder: (BuildContext context) => [
-                const PopupMenuItem(value: 0, child: Text("Post")),
-                const PopupMenuItem(value: 1, child: Text("Edit")),
-                const PopupMenuItem(value: 2, child: Text("Deleted")),
-              ],
+              itemBuilder: (BuildContext context) =>
+                  widget.getPostsData.status == "publish"
+                      ? [
+                          const PopupMenuItem(value: 0, child: Text("Post")),
+                          const PopupMenuItem(value: 1, child: Text("Edit")),
+                          const PopupMenuItem(value: 2, child: Text("Deleted")),
+                          const PopupMenuItem(
+                              value: 3, child: Text("Insights")),
+                        ]
+                      : [
+                          const PopupMenuItem(value: 0, child: Text("Post")),
+                          const PopupMenuItem(value: 1, child: Text("Edit")),
+                          const PopupMenuItem(value: 2, child: Text("Deleted")),
+                        ],
             ),
           ),
         ],

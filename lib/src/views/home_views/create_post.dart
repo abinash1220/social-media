@@ -15,7 +15,8 @@ import 'package:social_media_marketing/src/views/profile_views/add_social_media_
 import 'package:social_media_marketing/src/views/widgets/bottumnav-bar.dart';
 
 class CreateScreen extends StatefulWidget {
-  const CreateScreen({super.key});
+  var selectedDate;
+  CreateScreen({super.key, this.selectedDate});
 
   @override
   State<CreateScreen> createState() => _CreateScreenState();
@@ -102,6 +103,18 @@ class _CreateScreenState extends State<CreateScreen> {
         selectedDate = selectedDate + " " + timeString;
         ;
       });
+  }
+
+  setValue() {
+    setState(() {
+      selectedDate = widget.selectedDate;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    setValue();
   }
 
   @override

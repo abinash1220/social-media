@@ -196,7 +196,7 @@ class home2 extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-                const listviewsugetion(),
+                const ListViewSuggessions(),
               ],
             ),
           ],

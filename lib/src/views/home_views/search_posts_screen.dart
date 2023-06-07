@@ -31,7 +31,7 @@ class _SearchPostScreenState extends State<SearchPostScreen> {
   searchPosts() {
     if (searchController.text.length > 1) {
       postsController.getPostByKeyWord(searchController.text);
-    }else{
+    } else {
       postsController.searchPostList.clear();
       postsController.update();
     }
@@ -247,7 +247,7 @@ class _SearchPostScreenState extends State<SearchPostScreen> {
       }),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Get.to(const CreateScreen());
+          Get.to(CreateScreen());
         },
         backgroundColor: const Color(0xff75032D),
         child: const Icon(Icons.add),

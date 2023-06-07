@@ -45,7 +45,7 @@ class _LoaderScreenState extends State<LoaderScreen> {
                 const SizedBox(
                   height: 20,
                 ),
-                Text("Loading Screen....",
+                Text("Loading....",
                     style: primaryFont.copyWith(
                         fontSize: 18, color: const Color(0xff023047)))
               ],

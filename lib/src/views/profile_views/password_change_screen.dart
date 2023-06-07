@@ -25,9 +25,9 @@ class _PassWordChangeScreenState extends State<PassWordChangeScreen> {
 
   final _formKey = GlobalKey<FormState>();
 
-  bool isPasswordVisible = false;
-  bool isPasswordVisible2 = false;
-  bool isPasswordVisible3 = false;
+  bool isPasswordVisible = true;
+  bool isPasswordVisible2 = true;
+  bool isPasswordVisible3 = true;
 
   @override
   Widget build(BuildContext context) {

@@ -6,6 +6,8 @@ import 'package:social_media_marketing/src/constant/app_fonts.dart';
 import 'package:social_media_marketing/src/controllers/bottum_controller.dart';
 import 'package:social_media_marketing/src/controllers/posts_controller.dart';
 import 'package:social_media_marketing/src/views/home_views/create_post.dart';
+import 'package:social_media_marketing/src/views/home_views/search_posts_screen.dart';
+import 'package:social_media_marketing/src/views/photo_preview/photo_preview.dart';
 import 'package:social_media_marketing/src/views/widgets/bottumnav-bar.dart';
 
 class Gridviewsugetion extends StatelessWidget {
@@ -41,17 +43,22 @@ class Gridviewsugetion extends StatelessWidget {
                     Text("Suggestion",
                         style: primaryFont.copyWith(
                             fontSize: 18, color: Colors.white)),
-                    Container(
-                      height: 22,
-                      width: 22,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      child: const Center(
-                        child: Icon(
-                          Icons.search,
-                          size: 13,
+                    InkWell(
+                      onTap: () {
+                        Get.to(const SearchPostScreen());
+                      },
+                      child: Container(
+                        height: 22,
+                        width: 22,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: const Center(
+                          child: Icon(
+                            Icons.search,
+                            size: 13,
+                          ),
                         ),
                       ),
                     ),
@@ -63,7 +70,7 @@ class Gridviewsugetion extends StatelessWidget {
       body: GetBuilder<PostsController>(builder: (profileController) {
         return GridView.builder(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2),
+                crossAxisCount: 3),
             physics: const BouncingScrollPhysics(),
             itemCount: profileController.postSuggestionsList.length,
             shrinkWrap: true,
@@ -73,11 +80,18 @@ class Gridviewsugetion extends StatelessWidget {
                 child: Container(
                   child: Column(
                     children: [
-                      SizedBox(
-                        height: 74,
-                        width: 70,
-                        child: Image.network(profileController
-                            .postSuggestionsList[index].images.first),
+                      InkWell(
+                        onTap: () {
+                          Get.to(() => PhotoPreview(
+                              images: profileController
+                                  .postSuggestionsList[index].images.first));
+                        },
+                        child: SizedBox(
+                          height: 74,
+                          width: 70,
+                          child: Image.network(profileController
+                              .postSuggestionsList[index].images.first),
+                        ),
                       ),
                       Text(profileController.postSuggestionsList[index].title)
                     ],
@@ -88,7 +102,7 @@ class Gridviewsugetion extends StatelessWidget {
       }),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Get.to(const CreateScreen());
+          Get.to( CreateScreen());
         },
         backgroundColor: const Color(0xff75032D),
         child: const Icon(Icons.add),

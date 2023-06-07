@@ -39,8 +39,8 @@ class _ConnectFirstAccountScreenState extends State<ConnectFirstAccountScreen> {
                     Get.to(HomeBottomNavgationBar());
                   },
                   child: Container(
-                    height: 16,
-                    width: 33,
+                    height: 30,
+                    width: 45,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(8),
